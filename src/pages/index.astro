@@ -1,0 +1,332 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import DesignCard from '../components/DesignCard.astro';
+import ShapeCard from '../components/ShapeCard.astro';
+import ColorCard from '../components/ColorCard.astro';
+import OccasionCard from '../components/OccasionCard.astro';
+import SeasonalCard from '../components/SeasonalCard.astro';
+import FeaturedIdeas from '../components/FeaturedIdeas.astro';
+
+import heroImage from '../assets/images/hero-almond-chrome-french-manicure.jpg';
+import {
+  MAIN_SILOS,
+  POPULAR_DESIGNS,
+  NAIL_SHAPES,
+  NAIL_COLORS,
+  OCCASIONS,
+  SEASONS,
+} from '../data/silos';
+
+const pageTitle = 'The Mani Edit | Nail Designs, Ideas & Polish Inspiration';
+const pageDescription = 'Discover curated nail designs, trending nail shapes, polish colors, and essential nail care guides. Find your next manicure inspiration at The Mani Edit.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+
+  <!-- HERO SECTION: Primary Entity Hub & Single H1 -->
+  <section class="relative overflow-hidden pt-12 pb-16 lg:pt-16 lg:pb-24 border-b border-stone-200/70 bg-gradient-to-b from-[#FAF8F5] via-[#FAF8F5] to-[#F5EFEB]/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left: Semantic Content & Entity Focus -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 border border-stone-200 shadow-2xs">
+            <span class="w-2 h-2 rounded-full bg-[#B96655]"></span>
+            <span class="text-xs uppercase tracking-[0.2em] font-semibold text-stone-600 font-sans">
+              The Entity Hub for Manicures
+            </span>
+          </div>
+
+          <!-- The ONLY H1 on the entire homepage -->
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1C1917] leading-[1.12]">
+            Nail Designs, Nail Ideas &amp; Inspiration
+          </h1>
+
+          <!-- Intro Paragraph -->
+          <p class="text-base sm:text-lg text-stone-600 leading-relaxed max-w-2xl font-light">
+            Welcome to <strong>The Mani Edit</strong>, your comprehensive editorial directory for modern manicures. Whether you are searching for minimalist micro French tips, sculpted almond silhouettes, trending seasonal palettes, or practical nail health maintenance, explore our curated topical pillars organized for effortless discovery.
+          </p>
+
+          <!-- Quick Navigation Pill Strip -->
+          <div class="pt-2 flex flex-wrap gap-2">
+            <span class="text-xs font-semibold uppercase tracking-wider text-stone-500 self-center mr-1">
+              Jump to:
+            </span>
+            <a 
+              href="#explore-categories" 
+              class="px-3 py-1.5 rounded-full text-xs font-medium bg-white border border-stone-200/80 text-stone-800 hover:border-[#B96655] hover:text-[#B96655] transition-colors"
+            >
+              8 Main Silos
+            </a>
+            <a 
+              href="#popular-designs" 
+              class="px-3 py-1.5 rounded-full text-xs font-medium bg-white border border-stone-200/80 text-stone-800 hover:border-[#B96655] hover:text-[#B96655] transition-colors"
+            >
+              Popular Designs
+            </a>
+            <a 
+              href="#nail-shapes" 
+              class="px-3 py-1.5 rounded-full text-xs font-medium bg-white border border-stone-200/80 text-stone-800 hover:border-[#B96655] hover:text-[#B96655] transition-colors"
+            >
+              Shapes
+            </a>
+            <a 
+              href="#nail-colors" 
+              class="px-3 py-1.5 rounded-full text-xs font-medium bg-white border border-stone-200/80 text-stone-800 hover:border-[#B96655] hover:text-[#B96655] transition-colors"
+            >
+              Color Palettes
+            </a>
+            <a 
+              href="#nail-care-guide" 
+              class="px-3 py-1.5 rounded-full text-xs font-medium bg-white border border-stone-200/80 text-stone-800 hover:border-[#B96655] hover:text-[#B96655] transition-colors"
+            >
+              Care Guides
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Editorial Visual Feature using astro:assets with eager loading -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            <!-- Background Decorative Framing -->
+            <div class="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-[#EFE4DC] to-stone-200/40 -rotate-1 transform -z-10"></div>
+            
+            <div class="overflow-hidden rounded-2xl bg-white border border-stone-200/90 shadow-xl">
+              <Image 
+                src={heroImage}
+                alt="Editorial manicure photography featuring glazed sheer pink almond nails with delicate rose gold chrome French tips"
+                width={800}
+                height={600}
+                loading="eager"
+                decoding="async"
+                class="w-full h-auto object-cover transform hover:scale-102 transition-transform duration-500"
+              />
+              <div class="p-4 bg-white/95 backdrop-blur-xs flex items-center justify-between border-t border-stone-100">
+                <div>
+                  <p class="text-xs uppercase tracking-wider font-bold text-stone-900 font-sans">
+                    Glazed Chrome French
+                  </p>
+                  <p class="text-[11px] text-stone-500">
+                    Almond Silhouette &bull; Sheer Rose Tint
+                  </p>
+                </div>
+                <a 
+                  href="/nail-designs/" 
+                  class="text-xs font-semibold uppercase tracking-wider text-[#B96655] hover:underline"
+                >
+                  Explore Look &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN SEO CATEGORY SECTION: 8 Topical Silos -->
+  <section id="explore-categories" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      kicker="TOPICAL SEO SILOS"
+      title="Explore Nail Ideas"
+      subtitle="Browse through our eight primary topical pillars. Each silo provides comprehensive guides, visual inspiration, and curated techniques with zero fluff."
+    />
+
+    <!-- 8 Main Category Entity Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {MAIN_SILOS.map((silo, index) => (
+        <CategoryCard silo={silo} index={index} />
+      ))}
+    </div>
+  </section>
+
+  <!-- SECTION 1: Popular Nail Designs -->
+  <section id="popular-designs" class="py-16 sm:py-20 bg-stone-100/40 border-y border-stone-200/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        kicker="DISCOVERY GRID"
+        title="Popular Nail Designs"
+        subtitle="From timeless minimalist manicures to high-shine chrome powders and ombre gradients, discover the most requested nail art styles."
+        linkText="View All Designs"
+        linkHref="/nail-designs/"
+      />
+
+      <!-- Grid of 8 Example Design Categories -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {POPULAR_DESIGNS.map((design) => (
+          <DesignCard design={design} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: Find Your Nail Shape -->
+  <section id="nail-shapes" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      kicker="ANATOMY & PROPORTIONS"
+      title="Find Your Nail Shape"
+      subtitle="The right nail shape balances hand proportions and elevates every manicure. Explore the definitive silhouettes with tailored guides for each shape profile."
+      linkText="All Shape Guides"
+      linkHref="/nail-shapes/"
+    />
+
+    <!-- 6 Shape Cards Linking to Individual Shape Silos -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {NAIL_SHAPES.map((shape) => (
+        <ShapeCard shape={shape} />
+      ))}
+    </div>
+  </section>
+
+  <!-- SECTION 3: Explore Nail Colors -->
+  <section id="nail-colors" class="py-16 sm:py-20 bg-[#F5EFEB]/30 border-y border-stone-200/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        kicker="COLOR PALETTES"
+        title="Explore Nail Colors"
+        subtitle="Color sets the tone for your look. Explore curated polish edits spanning soft pinks, timeless reds, moody blacks, versatile nudes, and vibrant seasonal accents."
+        linkText="All Color Palettes"
+        linkHref="/nail-colors/"
+      />
+
+      <!-- 9 Color Swatch Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+        {NAIL_COLORS.map((color) => (
+          <ColorCard color={color} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Nail Inspiration for Every Occasion -->
+  <section id="occasion-nails" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      kicker="EVENT STYLING"
+      title="Nail Inspiration for Every Occasion"
+      subtitle="Find occasion-ready manicure designs thoughtfully matched to formal celebrations, romantic dates, academic milestones, and daily routines."
+      linkText="All Occasions"
+      linkHref="/occasion-nails/"
+    />
+
+    <!-- 6 Occasion Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {OCCASIONS.map((occasion) => (
+        <OccasionCard occasion={occasion} />
+      ))}
+    </div>
+  </section>
+
+  <!-- SECTION 5: Seasonal Nail Ideas -->
+  <section id="seasonal-nails" class="py-16 sm:py-20 bg-stone-100/40 border-y border-stone-200/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        kicker="CALENDAR INSPIRATION"
+        title="Seasonal Nail Ideas"
+        subtitle="Match your manicure to the weather and festive holidays. Browse seasonal color transitions and themed accent art throughout the calendar year."
+        linkText="All Seasons"
+        linkHref="/seasonal-nails/"
+      />
+
+      <!-- 6 Seasonal Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {SEASONS.map((season) => (
+          <SeasonalCard season={season} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: Nail Care & Helpful Guides -->
+  <section id="nail-care-guide" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="rounded-3xl bg-gradient-to-br from-[#FAF8F5] to-[#EFE4DC]/60 border border-stone-300/70 p-8 sm:p-12 lg:p-16 shadow-sm">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-8 space-y-5">
+          <span class="text-[11px] uppercase tracking-[0.25em] font-semibold text-[#B96655] font-sans">
+            HEALTH &amp; MAINTENANCE SILO
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1C1917] tracking-tight">
+            Nail Care &amp; Helpful Guides
+          </h2>
+          <p class="text-sm sm:text-base text-stone-700 leading-relaxed font-light">
+            Beautiful manicures begin with healthy nail beds. Our dedicated Nail Care pillar breaks down fundamental routines, cuticle oil science, nail plate strengthening, and safe removal techniques for gel and acrylic enhancements.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div class="p-4 rounded-xl bg-white/80 border border-stone-200/80">
+              <span class="text-xs font-bold text-stone-900 block mb-1">Growth &amp; Strength</span>
+              <span class="text-xs text-stone-600">Keratin protection and preventing brittle splits.</span>
+            </div>
+            <div class="p-4 rounded-xl bg-white/80 border border-stone-200/80">
+              <span class="text-xs font-bold text-stone-900 block mb-1">Cuticle Care</span>
+              <span class="text-xs text-stone-600">Hydration routines for soft, healthy nail perimeters.</span>
+            </div>
+            <div class="p-4 rounded-xl bg-white/80 border border-stone-200/80">
+              <span class="text-xs font-bold text-stone-900 block mb-1">Safe Removal</span>
+              <span class="text-xs text-stone-600">Non-damaging soak-off protocols for gel and press-ons.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-4 flex lg:justify-end">
+          <div class="w-full max-w-sm rounded-2xl bg-white p-6 border border-stone-200 shadow-md text-center space-y-4">
+            <div class="w-12 h-12 rounded-full bg-[#FAF8F5] text-[#B96655] mx-auto flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-stone-900">
+              Nail Care Pillar
+            </h3>
+            <p class="text-xs text-stone-600">
+              Read practical maintenance advice and routines before your next appointment.
+            </p>
+            <a
+              href="/nail-care/"
+              class="block w-full py-3 px-4 rounded-xl bg-[#1C1917] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#B96655] transition-colors"
+            >
+              Explore Nail Care Silo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: Latest / Featured Nail Ideas (Reusable Collection Ready) -->
+  <FeaturedIdeas />
+
+  <!-- SECTION 8: About the Website (Trust & Editorial Principles, Zero Fake Claims) -->
+  <section id="about" class="py-16 sm:py-20 border-t border-stone-200/80 bg-[#FAF8F5]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <span class="text-[11px] uppercase tracking-[0.25em] font-semibold text-stone-500 font-sans">
+        EDITORIAL STANDARDS
+      </span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#1C1917]">
+        About The Mani Edit
+      </h2>
+      <div class="space-y-4 text-stone-600 text-sm sm:text-base leading-relaxed text-left sm:text-center">
+        <p>
+          <strong>The Mani Edit</strong> is an editorial resource created to organize and elevate manicure inspiration. We catalog nail designs, nail shapes, polish color aesthetics, application types, seasonal edits, and practical nail care guides into clear, dedicated topical categories.
+        </p>
+        <p>
+          Our mission is to provide clean, accessible visual inspiration and educational information without cluttered ads, misleading claims, or algorithmic noise. Every section is built around real search intent to help you find precisely what you want for your next salon visit or at-home manicure.
+        </p>
+      </div>
+      <div class="pt-4 flex flex-wrap justify-center gap-4 text-xs font-semibold uppercase tracking-wider text-stone-700">
+        <span class="px-3 py-1.5 rounded-lg bg-stone-100 border border-stone-200">
+          Editorial Curation
+        </span>
+        <span class="px-3 py-1.5 rounded-lg bg-stone-100 border border-stone-200">
+          Entity-Based SEO
+        </span>
+        <span class="px-3 py-1.5 rounded-lg bg-stone-100 border border-stone-200">
+          Zero Intrusive Bloat
+        </span>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

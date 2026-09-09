@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://themaniedit.com/sitemap-index.xml

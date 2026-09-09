@@ -1,0 +1,53 @@
+---
+export interface Props {
+  kicker?: string;
+  title: string;
+  subtitle?: string;
+  align?: 'left' | 'center';
+  as?: 'h2' | 'h3';
+  linkText?: string;
+  linkHref?: string;
+}
+
+const {
+  kicker,
+  title,
+  subtitle,
+  align = 'left',
+  as: HeadingTag = 'h2',
+  linkText,
+  linkHref,
+} = Astro.props;
+---
+
+<div class={`mb-10 ${align === 'center' ? 'text-center max-w-2xl mx-auto' : 'flex flex-col md:flex-row md:items-end justify-between gap-4'}`}>
+  <div>
+    {kicker && (
+      <span class="inline-block text-[11px] uppercase tracking-[0.25em] font-semibold text-[#B96655] mb-2 font-sans">
+        {kicker}
+      </span>
+    )}
+    <HeadingTag class="font-serif text-3xl sm:text-4xl text-[#1C1917] tracking-tight font-medium">
+      {title}
+    </HeadingTag>
+    {subtitle && (
+      <p class="mt-2 text-stone-600 text-sm sm:text-base leading-relaxed max-w-2xl">
+        {subtitle}
+      </p>
+    )}
+  </div>
+
+  {linkText && linkHref && (
+    <div class="flex-shrink-0">
+      <a 
+        href={linkHref} 
+        class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-900 hover:text-[#B96655] transition-colors py-1 group"
+      >
+        <span>{linkText}</span>
+        <svg class="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  )}
+</div>

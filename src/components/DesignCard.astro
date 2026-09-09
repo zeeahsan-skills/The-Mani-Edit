@@ -1,0 +1,68 @@
+---
+import type { DesignStyle } from '../data/silos';
+
+interface Props {
+  design: DesignStyle;
+}
+
+const { design } = Astro.props;
+
+// Artistic minimal nail finish patterns representing the design categories
+const visualPatterns: Record<string, string> = {
+  'Short Nails': 'linear-gradient(135deg, #F3E7E4 0%, #E8D5CE 100%)',
+  'Simple Nails': 'linear-gradient(135deg, #F9F6F0 0%, #EBE3D7 100%)',
+  'Cute Nails': 'linear-gradient(135deg, #FDE2E4 0%, #FFD1DC 100%)',
+  'Classy Nails': 'linear-gradient(135deg, #EAE5D9 0%, #D8CFBE 100%)',
+  'French Tip Nails': 'linear-gradient(180deg, #FFFFFF 28%, #F7EBE8 30%, #F1DDD7 100%)',
+  'Chrome Nails': 'linear-gradient(135deg, #E6E8EB 0%, #F5F7FA 50%, #D1D5DB 100%)',
+  'Ombre Nails': 'linear-gradient(180deg, #FAD0C4 0%, #FFD1FF 100%)',
+  'Glitter Nails': 'radial-gradient(circle, #FFF4E0 10%, #F6D6A8 70%, #E8BC83 100%)',
+};
+
+const bgStyle = visualPatterns[design.name] || 'linear-gradient(135deg, #F5EFEB 0%, #E7DCD3 100%)';
+---
+
+<a 
+  href="/nail-designs/"
+  class="group block p-5 rounded-2xl bg-white border border-stone-200/80 editorial-card-shadow editorial-card-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B96655]"
+>
+  <!-- Visual Representation Banner -->
+  <div 
+    class="relative w-full h-32 rounded-xl mb-4 overflow-hidden flex items-center justify-center border border-stone-200/60 transition-transform duration-300 group-hover:scale-[1.02]"
+    style={`background: ${bgStyle};`}
+  >
+    <!-- Editorial Nail Silhouette Accent -->
+    <div class="w-14 h-24 rounded-t-full bg-white/75 backdrop-blur-xs border border-white/80 shadow-sm flex flex-col items-center justify-start pt-2">
+      <div class="w-8 h-1 rounded-full bg-stone-300/60 mb-2"></div>
+      {design.name === 'French Tip Nails' && (
+        <div class="w-full h-3 rounded-t-full bg-white border-b border-stone-200"></div>
+      )}
+      {design.name === 'Glitter Nails' && (
+        <div class="flex gap-1 mt-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+          <span class="w-1 h-1 rounded-full bg-amber-300"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+        </div>
+      )}
+      {design.name === 'Chrome Nails' && (
+        <div class="w-8 h-12 bg-gradient-to-tr from-transparent via-white to-transparent opacity-80 rounded"></div>
+      )}
+    </div>
+
+    <!-- Badge -->
+    <span class="absolute top-2.5 right-2.5 text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-white/90 text-stone-800 backdrop-blur-xs border border-stone-100 shadow-2xs">
+      {design.badge}
+    </span>
+  </div>
+
+  <!-- Meta Info -->
+  <span class="block text-[11px] uppercase tracking-wider font-semibold text-stone-400 mb-1">
+    {design.category}
+  </span>
+  <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors">
+    {design.name}
+  </h3>
+  <p class="mt-1.5 text-xs text-stone-600 leading-relaxed">
+    {design.description}
+  </p>
+</a>

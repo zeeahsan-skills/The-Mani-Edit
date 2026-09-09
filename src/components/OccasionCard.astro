@@ -1,0 +1,33 @@
+---
+import type { OccasionItem } from '../data/silos';
+
+interface Props {
+  occasion: OccasionItem;
+}
+
+const { occasion } = Astro.props;
+---
+
+<a 
+  href="/occasion-nails/"
+  class="group relative p-6 rounded-2xl bg-white border border-stone-200/80 editorial-card-shadow editorial-card-hover flex flex-col justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B96655]"
+>
+  <div>
+    <span class="inline-block text-[10px] font-semibold uppercase tracking-[0.2em] text-[#B96655] mb-2">
+      {occasion.vibe}
+    </span>
+    <h3 class="font-serif text-2xl font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors">
+      {occasion.name}
+    </h3>
+    <p class="mt-2.5 text-xs text-stone-600 leading-relaxed">
+      {occasion.description}
+    </p>
+  </div>
+
+  <div class="mt-6 pt-3 border-t border-stone-100 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-stone-800 group-hover:text-[#B96655] transition-colors">
+    <span>View Ideas</span>
+    <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+    </svg>
+  </div>
+</a>

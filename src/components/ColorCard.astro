@@ -1,0 +1,47 @@
+---
+import type { ColorItem } from '../data/silos';
+
+interface Props {
+  color: ColorItem;
+}
+
+const { color } = Astro.props;
+---
+
+<a 
+  href="/nail-colors/"
+  class="group flex flex-col p-4 rounded-2xl bg-white border border-stone-200/80 editorial-card-shadow editorial-card-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B96655]"
+>
+  <!-- Color Swatch Presentation -->
+  <div class="relative w-full h-24 rounded-xl mb-3 flex items-center justify-center overflow-hidden border border-stone-200/60 transition-transform duration-300 group-hover:scale-[1.02]">
+    <div 
+      class="w-full h-full"
+      style={`background: linear-gradient(135deg, ${color.hex} 0%, ${color.accent} 100%);`}
+    >
+      <!-- Glass highlight arc imitating glossy gel topcoat -->
+      <div class="w-full h-1/2 bg-gradient-to-b from-white/30 to-transparent"></div>
+    </div>
+    
+    <!-- Floating Hex Tag -->
+    <span class="absolute bottom-2 left-2 text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-md bg-black/40 text-white backdrop-blur-xs">
+      {color.hex}
+    </span>
+  </div>
+
+  <!-- Color Meta -->
+  <div class="flex items-center justify-between">
+    <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors">
+      {color.name}
+    </h3>
+    <span class="text-[10px] uppercase font-semibold text-stone-400">
+      Palette
+    </span>
+  </div>
+
+  <p class="text-[11px] text-stone-500 mt-1 line-clamp-1 font-medium">
+    {color.undertone}
+  </p>
+  <p class="text-[11px] text-stone-400 mt-0.5 italic">
+    {color.mood}
+  </p>
+</a>

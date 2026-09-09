@@ -1,0 +1,109 @@
+---
+import { MAIN_SILOS } from '../data/silos';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-stone-200 bg-[#F5EFEB]/50 text-stone-800 transition-colors">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      
+      <!-- Brand & Editorial Mission -->
+      <div class="lg:col-span-2 space-y-4">
+        <a href="/" class="inline-flex items-center gap-2.5 group">
+          <span class="w-8 h-8 rounded-full bg-[#1C1917] text-[#FAF8F5] flex items-center justify-center font-serif text-lg font-medium group-hover:bg-[#B96655] transition-colors">
+            M
+          </span>
+          <span class="font-serif text-2xl font-bold tracking-tight text-[#1C1917]">
+            The Mani Edit
+          </span>
+        </a>
+        <p class="text-sm text-stone-600 leading-relaxed max-w-sm">
+          A curated editorial resource for manicures, trending nail designs, nail shapes, color palettes, technique breakdowns, and practical nail wellness guides.
+        </p>
+        <p class="text-xs text-stone-500 font-medium">
+          Dedicated to thoughtful, aesthetic manicure inspiration for every style and season.
+        </p>
+      </div>
+
+      <!-- Silo Directory Column 1 -->
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-stone-900 mb-4 font-sans">
+          Topical Silos
+        </h3>
+        <ul class="space-y-2.5 text-sm text-stone-600">
+          {MAIN_SILOS.slice(0, 4).map((silo) => (
+            <li>
+              <a 
+                href={silo.href} 
+                class="hover:text-[#B96655] transition-colors inline-block"
+              >
+                {silo.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Silo Directory Column 2 -->
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-stone-900 mb-4 font-sans">
+          Guides & Care
+        </h3>
+        <ul class="space-y-2.5 text-sm text-stone-600">
+          {MAIN_SILOS.slice(4, 8).map((silo) => (
+            <li>
+              <a 
+                href={silo.href} 
+                class="hover:text-[#B96655] transition-colors inline-block"
+              >
+                {silo.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Editorial & Trust Links -->
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-stone-900 mb-4 font-sans">
+          About & Legal
+        </h3>
+        <ul class="space-y-2.5 text-sm text-stone-600">
+          <li>
+            <a href="/" class="hover:text-[#B96655] transition-colors inline-block">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#about" class="hover:text-[#B96655] transition-colors inline-block">
+              About The Mani Edit
+            </a>
+          </li>
+          <li>
+            <a href="/contact/" class="hover:text-[#B96655] transition-colors inline-block">
+              Contact
+            </a>
+          </li>
+          <li>
+            <a href="/privacy-policy/" class="hover:text-[#B96655] transition-colors inline-block">
+              Privacy Policy
+            </a>
+          </li>
+          <li>
+            <a href="/terms/" class="hover:text-[#B96655] transition-colors inline-block">
+              Terms of Use
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-12 pt-8 border-t border-stone-200/80 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
+      <p>&copy; {currentYear} The Mani Edit (themaniedit.com). All rights reserved.</p>
+      <p class="text-stone-400">SEO-First Editorial Manicure Architecture</p>
+    </div>
+  </div>
+</footer>

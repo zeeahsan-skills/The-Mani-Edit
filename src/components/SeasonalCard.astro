@@ -1,0 +1,50 @@
+---
+interface SeasonProps {
+  name: string;
+  slug: string;
+  palette: string;
+  description: string;
+}
+
+interface Props {
+  season: SeasonProps;
+}
+
+const { season } = Astro.props;
+
+// Seasonal color tone accents
+const seasonColors: Record<string, string> = {
+  Spring: 'border-l-4 border-l-pink-300',
+  Summer: 'border-l-4 border-l-amber-400',
+  Fall: 'border-l-4 border-l-orange-600',
+  Winter: 'border-l-4 border-l-sky-400',
+  Christmas: 'border-l-4 border-l-emerald-600',
+  Halloween: 'border-l-4 border-l-purple-600',
+};
+
+const borderAccent = seasonColors[season.name] || 'border-l-4 border-l-stone-300';
+---
+
+<a 
+  href="/seasonal-nails/"
+  class={`group p-6 rounded-2xl bg-white border border-stone-200/80 ${borderAccent} editorial-card-shadow editorial-card-hover flex flex-col justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B96655]`}
+>
+  <div>
+    <span class="text-[10px] uppercase tracking-widest font-semibold text-stone-400">
+      {season.palette}
+    </span>
+    <h3 class="font-serif text-2xl font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">
+      {season.name}
+    </h3>
+    <p class="mt-2 text-xs text-stone-600 leading-relaxed">
+      {season.description}
+    </p>
+  </div>
+
+  <div class="mt-5 pt-3 border-t border-stone-100 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-stone-800 group-hover:text-[#B96655] transition-colors">
+    <span>Explore {season.name}</span>
+    <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </div>
+</a>

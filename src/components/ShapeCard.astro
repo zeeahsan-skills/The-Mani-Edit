@@ -1,0 +1,60 @@
+---
+import type { ShapeItem } from '../data/silos';
+
+interface Props {
+  shape: ShapeItem;
+}
+
+const { shape } = Astro.props;
+---
+
+<a 
+  href={shape.href}
+  class="group flex flex-col justify-between p-6 rounded-2xl bg-white border border-stone-200/80 editorial-card-shadow editorial-card-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B96655]"
+>
+  <div>
+    <!-- Nail Silhouette Graphic -->
+    <div class="relative w-full h-36 rounded-xl bg-[#F7F3EE] mb-5 flex items-center justify-center overflow-hidden border border-stone-100 group-hover:bg-[#F2ECE4] transition-colors">
+      <svg 
+        class="w-16 h-28 text-stone-300 group-hover:text-[#B96655] transition-colors" 
+        viewBox="0 0 64 64" 
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <!-- Nail Bed / Cuticle Base -->
+        <path d={shape.silhouette} />
+        <!-- Polish Highlight Sheen -->
+        <path 
+          d="M 28,18 C 28,26 26,44 26,48" 
+          stroke="white" 
+          stroke-width="2" 
+          stroke-linecap="round" 
+          stroke-opacity="0.6"
+          fill="none" 
+        />
+      </svg>
+      
+      <span class="absolute bottom-2 right-2 text-[10px] font-mono uppercase tracking-widest text-stone-400">
+        Shape Profile
+      </span>
+    </div>
+
+    <!-- Shape Name & Tag -->
+    <h3 class="font-serif text-2xl font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors">
+      {shape.name}
+    </h3>
+    <p class="text-xs uppercase tracking-wider font-semibold text-[#B96655] mt-1 mb-2">
+      {shape.vibe}
+    </p>
+    <p class="text-xs text-stone-600 leading-relaxed">
+      {shape.bestFor}
+    </p>
+  </div>
+
+  <div class="mt-5 pt-3 border-t border-stone-100 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-stone-700 group-hover:text-[#B96655] transition-colors">
+    <span>View {shape.name} Guide</span>
+    <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </div>
+</a>
