@@ -1,0 +1,49 @@
+---
+interface Props {
+  headline: string;
+  description: string;
+  datePublished: Date | string;
+  dateModified?: Date | string;
+  image?: string;
+  canonicalUrl: string;
+}
+
+const {
+  headline,
+  description,
+  datePublished,
+  dateModified,
+  image = 'https://themaniedit.com/images/the-mani-edit-og.jpg',
+  canonicalUrl,
+} = Astro.props;
+
+const schemaData = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalUrl,
+  },
+  headline,
+  description,
+  image: image.startsWith('http') ? image : `https://themaniedit.com${image}`,
+  datePublished: new Date(datePublished).toISOString(),
+  dateModified: dateModified ? new Date(dateModified).toISOString() : new Date(datePublished).toISOString(),
+  author: {
+    '@type': 'Organization',
+    name: 'The Nail Edit Editorial Team',
+    url: 'https://themaniedit.com/about/',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'The Nail Edit',
+    url: 'https://themaniedit.com/',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://themaniedit.com/favicon.svg',
+    },
+  },
+};
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schemaData)} />

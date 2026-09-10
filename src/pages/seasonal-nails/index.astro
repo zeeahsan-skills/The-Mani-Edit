@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const pageTitle = 'Seasonal Nails: Manicure Ideas for Spring, Summer, Fall, Winter & Holidays | The Nail Edit';
+const pageDescription = 'Explore seasonal nail inspiration across Spring pastels, Summer brights, cozy Autumn hues, frosted Winter glazes, and festive Christmas & Halloween nail art.';
+const canonicalURL = new URL('/seasonal-nails/', Astro.site || 'https://themaniedit.com');
+
+const seasonDetails = [
+  {
+    name: 'Spring Nails',
+    slug: 'spring',
+    tone: 'Soft, Fresh & Blooming',
+    paletteSummary: 'Dewy pastels, sheer lilacs, butter yellow, and sage botanical accents.',
+    signatureMotifs: ['Dainty daisy micro-art', 'Sheer strawberry milk bases', 'Pastel color-block French tips', 'Blush pink aura gradients'],
+    lifestyleContext: 'Transitioning out of heavy winter cremes into lighter, breathable jelly finishes.'
+  },
+  {
+    name: 'Summer Nails',
+    slug: 'summer',
+    tone: 'Vibrant, Sun-Drenched & Bold',
+    paletteSummary: 'Neon accents, electric cobalt, juicy coral pinks, and crisp coconut whites.',
+    signatureMotifs: ['Poolside blue chrome', 'Fruit micro-illustrations (cherries, lemons)', 'Milky white sheer almond nails', 'Sunset ombré fades'],
+    lifestyleContext: 'Formulated to resist sunscreen haze and chlorine exposure with high-performance topcoats.'
+  },
+  {
+    name: 'Fall Nails',
+    slug: 'fall',
+    tone: 'Warm, Earthy & Luxurious',
+    paletteSummary: 'Burnt terracotta, rich cinnamon, deep olive, warm espresso, and spiced pumpkin.',
+    signatureMotifs: ['Layered tortoise shell jelly art', 'Matte chestnut brown bases', 'Gold foil abstract leaf lines', 'Moody wine-red cremes'],
+    lifestyleContext: 'Complements cozy knit sweaters, leather accessories, and shifting natural light.'
+  },
+  {
+    name: 'Winter Nails',
+    slug: 'winter',
+    tone: 'Crisp, Frosted & Dramatic',
+    paletteSummary: 'Icy metallics, snowy whites, reflective silver chrome, and deep midnight navy.',
+    signatureMotifs: ['Velvet cat-eye magnetic sheen', 'Silver liquid chrome drips', 'Glazed snowflake micro-details', 'Deep black cherry high-gloss'],
+    lifestyleContext: 'Emphasizes rich multidimensional textures that catch cozy indoor firelight.'
+  },
+  {
+    name: 'Christmas & Holiday Nails',
+    slug: 'christmas',
+    tone: 'Festive, Elegant & Celebratory',
+    paletteSummary: 'Ruby red, forest emerald, champagne gold, and glistening snow white.',
+    signatureMotifs: ['Fine champagne glitter cascades', 'Emerald green French smile lines', 'Pecan & gold leaf accents', 'Velvet red ribbon art'],
+    lifestyleContext: 'Designed for end-of-year galas, family gatherings, and New Year’s Eve celebrations.'
+  },
+  {
+    name: 'Halloween Nails',
+    slug: 'halloween',
+    tone: 'Moody, Playful & Gothic Chic',
+    paletteSummary: 'Jet black, pumpkin orange, ghostly sheer white, and blood-red syrup jelly.',
+    signatureMotifs: ['Micro ghost accents on sheer bases', 'Gothic black lace stamping', 'Dripping French tips', 'Spiderweb fine linework'],
+    lifestyleContext: 'Elevates festive costume themes with chic, wearable modern editorial polish.'
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} canonicalURL={canonicalURL}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <Breadcrumbs items={[{ label: 'Seasonal Nails' }]} />
+
+    <!-- HERO SECTION: Pillar 7 Single H1 -->
+    <header class="pt-6 pb-12 border-b border-stone-200/80">
+      <div class="max-w-3xl">
+        <span class="inline-block text-xs uppercase tracking-[0.2em] font-semibold text-[#B96655] mb-2 font-sans">
+          Topical Pillar &bull; The Evergreen Calendar Edit
+        </span>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1C1917] leading-[1.12]">
+          Seasonal Nails &amp; Holiday Manicure Inspiration
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed font-light">
+          Manicure trends naturally mirror the rhythm of the seasons. From fresh spring pastels and luminous summer chromes to rich autumn tortoise shell and frosted winter velvet, explore our evergreen directory of seasonal palettes and festive holiday designs.
+        </p>
+      </div>
+
+      <!-- Quick Jump Strip -->
+      <div class="mt-8 flex flex-wrap gap-2">
+        <span class="text-xs font-semibold uppercase tracking-wider text-stone-500 self-center mr-2">Jump to Season:</span>
+        {seasonDetails.map((season) => (
+          <a href={`#${season.slug}`} class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] transition-colors">
+            {season.name}
+          </a>
+        ))}
+      </div>
+    </header>
+
+    <!-- SECTION 1: The Cyclical Color Shift -->
+    <section class="py-12 border-b border-stone-200/80">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80">
+          <span class="text-xs font-mono uppercase tracking-wider text-[#B96655] font-semibold">Cycle 01 / Lighting</span>
+          <h2 class="font-serif text-xl font-bold text-[#1C1917] mt-1 mb-2">Natural Daylight Shifts</h2>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Strong summer sunlight intensifies bold neon pigments and reflective chromes. Softer autumn and winter ambient lighting highlights rich, multidimensional cremes and velvet cat-eye depths.
+          </p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80">
+          <span class="text-xs font-mono uppercase tracking-wider text-[#B96655] font-semibold">Cycle 02 / Wardrobe</span>
+          <h2 class="font-serif text-xl font-bold text-[#1C1917] mt-1 mb-2">Textile Coordination</h2>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Nails interact directly with your wardrobe: linen and cottons pair effortlessly with sheer jellies, while wool coats, cashmere scarves, and boots welcome earthy espresso, terracotta, and olive.
+          </p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80">
+          <span class="text-xs font-mono uppercase tracking-wider text-[#B96655] font-semibold">Cycle 03 / Climate</span>
+          <h2 class="font-serif text-xl font-bold text-[#1C1917] mt-1 mb-2">Weather &amp; Hydration</h2>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Cold winter weather and dry indoor heating leach moisture from cuticles, making oil maintenance crucial. Hot summer days demand UV-stable topcoats that prevent yellowing from sun and chlorine.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: The 6 Seasonal & Holiday Guides -->
+    <section class="py-14">
+      <SectionHeading
+        kicker="CALENDAR INSPIRATION"
+        title="The Six Evergreen Seasonal Edits"
+        subtitle="Explore color palettes, signature motifs, and aesthetic tone for every season and holiday."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {seasonDetails.map((season) => (
+          <article 
+            id={season.slug}
+            class="p-7 rounded-2xl bg-white border border-stone-200/80 flex flex-col justify-between editorial-card-shadow editorial-card-hover"
+          >
+            <div>
+              <span class="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-stone-100 text-[#B96655]">
+                {season.tone}
+              </span>
+              <h2 class="font-serif text-2xl font-bold text-[#1C1917] mt-3 mb-2">
+                {season.name}
+              </h2>
+              <p class="text-xs text-stone-600 leading-relaxed mb-4">
+                <strong>Color Story:</strong> {season.paletteSummary}
+              </p>
+
+              <div class="pt-3 border-t border-stone-100 space-y-2 mb-4">
+                <span class="block text-[11px] font-bold uppercase tracking-wider text-stone-800">
+                  Signature Motifs:
+                </span>
+                <ul class="space-y-1.5">
+                  {season.signatureMotifs.map((motif) => (
+                    <li class="text-xs text-stone-600 flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-[#B96655] mt-1 flex-shrink-0"></span>
+                      <span>{motif}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="pt-3 border-t border-stone-100 text-xs text-stone-500">
+                <strong class="text-stone-800">Context:</strong> {season.lifestyleContext}
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+              <span>Evergreen Season Guide</span>
+              <span class="text-[#B96655] font-semibold">Planned &rarr;</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- SECTION 3: Cross-Silo Connections -->
+    <section class="py-12 border-t border-stone-200/80">
+      <SectionHeading
+        kicker="EXPLORE MORE"
+        title="Sync Your Season With Art &amp; Care"
+        subtitle="Bring your seasonal palette to life with targeted techniques and seasonal nail care routines."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <a href="/nail-colors/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Palette Inspo</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Nail Colors Directory</h3>
+          <p class="text-xs text-stone-600 mt-1">Discover specific undertone breakdowns across pinks, browns, blues, and reds.</p>
+        </a>
+        <a href="/nail-designs/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Design Ideas</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Nail Designs Gallery</h3>
+          <p class="text-xs text-stone-600 mt-1">See how chrome powders, ombré fades, and French tips transform seasonally.</p>
+        </a>
+        <a href="/nail-care/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Maintenance</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Winter &amp; Summer Nail Care</h3>
+          <p class="text-xs text-stone-600 mt-1">Combat seasonal cuticle dryness with targeted jojoba oil and barrier hydration.</p>
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

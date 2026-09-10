@@ -1,0 +1,66 @@
+---
+import type { RelatedPage } from '../types/content';
+
+interface Props {
+  pages?: RelatedPage[];
+  siloName?: string;
+  siloUrl?: string;
+}
+
+const { pages = [], siloName, siloUrl } = Astro.props;
+
+const hasPages = pages && pages.length > 0;
+---
+
+{hasPages && (
+  <section class="mt-14 pt-10 border-t border-stone-200/80 not-prose" aria-labelledby="related-pages-heading">
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <span class="text-[10px] uppercase tracking-widest font-semibold text-[#B96655] font-sans">
+          CONNECTED INSPIRATION
+        </span>
+        <h2 id="related-pages-heading" class="font-serif text-2xl font-bold text-[#1C1917] mt-0.5">
+          Related Manicure Guides
+        </h2>
+      </div>
+
+      {siloUrl && siloName && (
+        <a 
+          href={siloUrl} 
+          class="hidden sm:inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-stone-700 hover:text-[#B96655] transition-colors"
+        >
+          <span>All {siloName}</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      )}
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {pages.map((page) => (
+        <a 
+          href={page.url}
+          class="group p-5 rounded-2xl bg-white border border-stone-200/80 editorial-card-shadow editorial-card-hover flex flex-col justify-between"
+        >
+          <div>
+            <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors">
+              {page.title}
+            </h3>
+            {page.description && (
+              <p class="mt-1.5 text-xs text-stone-600 leading-relaxed line-clamp-2">
+                {page.description}
+              </p>
+            )}
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-[#B96655]">
+            <span>Read Guide</span>
+            <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+)}

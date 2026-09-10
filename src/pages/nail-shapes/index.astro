@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const pageTitle = 'Nail Shapes: Complete Guide to Profiles & Silhouettes | The Nail Edit';
+const pageDescription = 'Explore popular nail shapes including almond, coffin, square, oval, stiletto, and squoval. Learn how silhouette impacts hand proportions, strength, and style.';
+const canonicalURL = new URL('/nail-shapes/', Astro.site || 'https://themaniedit.com');
+
+const shapeProfiles = [
+  {
+    name: 'Almond',
+    slug: 'almond',
+    silhouette: 'M 18,52 C 18,34 22,14 32,8 C 42,14 46,34 46,52 C 44,56 20,56 18,52 Z',
+    aesthetic: 'Feminine, graceful, elongating',
+    anatomy: 'Tapered sidewalls converging toward a gently rounded, soft peak.',
+    durability: 'Moderate to High (rounded tip deflects blunt impact)',
+    idealLength: 'Medium to Long',
+    handType: 'Broad nail beds or shorter fingers seeking visual elongation',
+    maintenance: 'Requires regular filing on sidewalls to maintain symmetry'
+  },
+  {
+    name: 'Coffin / Ballerina',
+    slug: 'coffin',
+    silhouette: 'M 18,52 L 23,12 L 41,12 L 46,52 C 44,56 20,56 18,52 Z',
+    aesthetic: 'Edgy, glamorous, structural',
+    anatomy: 'Tapered inward edges that terminate abruptly in a crisp straight-across horizontal tip.',
+    durability: 'Moderate (corners can catch if not reinforced with gel or acrylic)',
+    idealLength: 'Long to Extra Long',
+    handType: 'Slender fingers and strong apex enhancements (BIAB or acrylic)',
+    maintenance: 'Sharp outer corners require careful filing to prevent chipping'
+  },
+  {
+    name: 'Square',
+    slug: 'square',
+    silhouette: 'M 18,52 L 18,10 L 46,10 L 46,52 C 44,56 20,56 18,52 Z',
+    aesthetic: 'Classic, crisp, modern architectural',
+    anatomy: 'Straight, parallel vertical sidewalls with a sharp 90-degree angle across the free edge.',
+    durability: 'High on short lengths, lower on long natural nails prone to corner snagging',
+    idealLength: 'Short to Medium',
+    handType: 'Naturally long nail beds or narrow fingers',
+    maintenance: 'Requires strict straight-edge filing with zero curving'
+  },
+  {
+    name: 'Oval',
+    slug: 'oval',
+    silhouette: 'M 18,52 C 18,30 20,12 32,10 C 44,12 46,30 46,52 C 44,56 20,56 18,52 Z',
+    aesthetic: 'Natural, soft, timeless',
+    anatomy: 'Curved free edge mirroring the natural contours of the cuticle base.',
+    durability: 'Very High (no sharp corners to snag or chip)',
+    idealLength: 'Short to Medium',
+    handType: 'Universal flattering profile for natural nails and active lifestyles',
+    maintenance: 'Low maintenance; easy to preserve with an emery board'
+  },
+  {
+    name: 'Stiletto',
+    slug: 'stiletto',
+    silhouette: 'M 18,52 L 32,4 L 46,52 C 44,56 20,56 18,52 Z',
+    aesthetic: 'Daring, high-drama, editorial',
+    anatomy: 'Deeply tapered sidewalls meeting at an ultra-sharp, needle-like focal point.',
+    durability: 'Low (natural nails cannot support without hard gel or acrylic reinforcement)',
+    idealLength: 'Long to Extra Long',
+    handType: 'Statement styling; best for events or extensions',
+    maintenance: 'High; tip requires continuous reinforcement to avoid snapping'
+  },
+  {
+    name: 'Squoval',
+    slug: 'squoval',
+    silhouette: 'M 18,52 L 18,14 C 18,11 20,10 23,10 L 41,10 C 44,10 46,11 46,14 L 46,52 C 44,56 20,56 18,52 Z',
+    aesthetic: 'Balanced, pragmatic, clean',
+    anatomy: 'Flat horizontal square tip with gently rounded, softened corners.',
+    durability: 'Very High (combines square structural integrity with oval snag-resistance)',
+    idealLength: 'Short to Medium',
+    handType: 'Every nail bed type, especially practical everyday natural nails',
+    maintenance: 'Very low; forgiving edge shape'
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} canonicalURL={canonicalURL}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <Breadcrumbs items={[{ label: 'Nail Shapes' }]} />
+
+    <!-- HERO SECTION: Pillar 2 Single H1 -->
+    <header class="pt-6 pb-12 border-b border-stone-200/80">
+      <div class="max-w-3xl">
+        <span class="inline-block text-xs uppercase tracking-[0.2em] font-semibold text-[#B96655] mb-2 font-sans">
+          Topical Pillar &bull; Silhouette &amp; Proportions
+        </span>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1C1917] leading-[1.12]">
+          Nail Shapes &amp; Silhouette Guide
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed font-light">
+          Your nail shape dictates more than visual style: it directly governs how long your manicure lasts, how resistant your free edges are against chipping, and how balanced your finger proportions appear. Explore our anatomical guide to the six definitive nail silhouettes.
+        </p>
+      </div>
+
+      <!-- Jump Navigation -->
+      <div class="mt-8 flex flex-wrap gap-2">
+        <span class="text-xs font-semibold uppercase tracking-wider text-stone-500 self-center mr-2">Jump to Silhouette:</span>
+        {shapeProfiles.map((shape) => (
+          <a href={`#${shape.slug}`} class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] hover:text-[#B96655] transition-colors">
+            {shape.name}
+          </a>
+        ))}
+      </div>
+    </header>
+
+    <!-- SECTION 1: How Shape Impacts Manicure Longevity -->
+    <section class="py-12 border-b border-stone-200/80">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80">
+          <span class="text-xs font-mono uppercase tracking-wider text-[#B96655] font-semibold">01 / Proportions</span>
+          <h2 class="font-serif text-xl font-bold text-[#1C1917] mt-1 mb-2">Finger Elongation</h2>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Tapered shapes like almond and oval draw the eye upward, creating the visual illusion of longer, more slender fingers. Straight shapes like square accentuate natural nail plate width.
+          </p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80">
+          <span class="text-xs font-mono uppercase tracking-wider text-[#B96655] font-semibold">02 / Mechanics</span>
+          <h2 class="font-serif text-xl font-bold text-[#1C1917] mt-1 mb-2">Stress Points &amp; Apex</h2>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Sharp corners catch on textured fabrics and keyboards. Rounded contours deflect lateral pressure toward the nail bed, substantially reducing the frequency of edge fractures.
+          </p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80">
+          <span class="text-xs font-mono uppercase tracking-wider text-[#B96655] font-semibold">03 / Natural vs. Enhanced</span>
+          <h2 class="font-serif text-xl font-bold text-[#1C1917] mt-1 mb-2">Structural Demands</h2>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Natural nails thrive with oval, squoval, or short almond profiles. Dramatic extensions like coffin and stiletto require builder gel or acrylic to provide an engineered arch apex.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: The 6 Detailed Shape Profiles -->
+    <section class="py-14">
+      <SectionHeading
+        kicker="ANATOMICAL BREAKDOWN"
+        title="The Six Definitive Nail Shapes"
+        subtitle="Detailed analysis of contour geometry, lifestyle compatibility, and maintenance needs for each silhouette."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {shapeProfiles.map((shape) => (
+          <article 
+            id={shape.slug}
+            class="p-7 rounded-2xl bg-white border border-stone-200/80 flex flex-col justify-between editorial-card-shadow editorial-card-hover"
+          >
+            <div>
+              <!-- Silhouette Illustration Banner -->
+              <div class="w-full h-36 rounded-xl bg-[#FAF8F5] border border-stone-200/60 mb-5 flex items-center justify-center relative">
+                <svg class="w-16 h-28 text-stone-300 group-hover:text-[#B96655] transition-colors" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
+                  <path d={shape.silhouette} />
+                  <path d="M 28,18 C 28,26 26,44 26,48" stroke="white" stroke-width="2" stroke-linecap="round" stroke-opacity="0.6" fill="none" />
+                </svg>
+                <span class="absolute top-2 right-2 text-[10px] font-mono uppercase tracking-wider text-stone-400">
+                  Profile
+                </span>
+              </div>
+
+              <h2 class="font-serif text-2xl font-bold text-[#1C1917]">
+                {shape.name}
+              </h2>
+              <p class="text-xs uppercase tracking-wider font-semibold text-[#B96655] mt-0.5 mb-3">
+                {shape.aesthetic}
+              </p>
+              <p class="text-xs text-stone-600 leading-relaxed mb-4">
+                {shape.anatomy}
+              </p>
+
+              <div class="space-y-2.5 pt-3 border-t border-stone-100 text-xs">
+                <div>
+                  <span class="font-bold text-stone-900 block mb-0.5">Durability:</span>
+                  <span class="text-stone-600">{shape.durability}</span>
+                </div>
+                <div>
+                  <span class="font-bold text-stone-900 block mb-0.5">Best Length:</span>
+                  <span class="text-stone-600">{shape.idealLength}</span>
+                </div>
+                <div>
+                  <span class="font-bold text-stone-900 block mb-0.5">Best Suited For:</span>
+                  <span class="text-stone-600">{shape.handType}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+              <span>Future Dedicated Guide</span>
+              <span class="text-[#B96655] font-semibold">Planned &rarr;</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- SECTION 3: Cross-Silo Interlinking -->
+    <section class="py-12 border-t border-stone-200/80">
+      <SectionHeading
+        kicker="NEXT STEPS"
+        title="Complete Your Manicure Vision"
+        subtitle="Now that you understand nail profiles, pair your shape with artistic styles, curated colors, and proper reinforcement."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <a href="/nail-designs/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Inspiration</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Nail Designs Directory</h3>
+          <p class="text-xs text-stone-600 mt-1">Discover which art styles flourish on your specific shape profile.</p>
+        </a>
+        <a href="/nail-types/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Structure</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Nail Types &amp; Enhancements</h3>
+          <p class="text-xs text-stone-600 mt-1">Learn whether gel, acrylic, or dip powder best supports your target length.</p>
+        </a>
+        <a href="/nail-care/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Wellness</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Care &amp; Edge Maintenance</h3>
+          <p class="text-xs text-stone-600 mt-1">Master non-damaging filing protocols to keep sidewalls sturdy.</p>
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

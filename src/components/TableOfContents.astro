@@ -1,0 +1,49 @@
+---
+export interface HeadingItem {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: HeadingItem[];
+}
+
+const { headings } = Astro.props;
+
+// Filter to only H2 and H3 headings, excluding H1
+const tocHeadings = (headings || []).filter(
+  (h) => (h.depth === 2 || h.depth === 3) && h.text.trim().length > 0
+);
+
+const hasHeadings = tocHeadings.length > 0;
+---
+
+{hasHeadings && (
+  <nav 
+    aria-label="Table of contents" 
+    class="my-8 p-6 rounded-2xl bg-[#F7F3EE] border border-stone-200/80 not-prose"
+  >
+    <div class="flex items-center gap-2 mb-3">
+      <svg class="w-4 h-4 text-[#B96655]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+      </svg>
+      <span class="text-xs uppercase tracking-widest font-bold text-stone-900 font-sans">
+        Table of Contents
+      </span>
+    </div>
+
+    <ol class="space-y-1.5 text-xs text-stone-700">
+      {tocHeadings.map((h) => (
+        <li class={h.depth === 3 ? 'pl-4 text-stone-600' : 'font-medium'}>
+          <a 
+            href={`#${h.slug}`} 
+            class="hover:text-[#B96655] transition-colors inline-block py-0.5 focus:outline-none focus-visible:underline"
+          >
+            {h.text}
+          </a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}

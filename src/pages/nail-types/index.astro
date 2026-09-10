@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const pageTitle = 'Nail Types: Acrylic, Gel, Dip Powder & Press-Ons Explained | The Nail Edit';
+const pageDescription = 'Compare major nail enhancement types: acrylic, gel (BIAB, hard & soft gel), dip powder, and press-on nails. Learn about longevity, application, and safety.';
+const canonicalURL = new URL('/nail-types/', Astro.site || 'https://themaniedit.com');
+
+const enhancementTypes = [
+  {
+    name: 'Gel Nails',
+    slug: 'gel-nails',
+    tag: 'Flexibility & Natural Feel',
+    mechanism: 'Oligomers and photoinitiators cured under UV/LED light',
+    wearTime: '2 to 4 weeks depending on gel category',
+    subcategories: [
+      { name: 'Soft Gel Polish', detail: 'Flexible, soak-off polish for natural nails (2-3 weeks)' },
+      { name: 'Builder Gel (BIAB)', detail: 'Reinforcing viscosity to grow natural nails with strength (3-4 weeks)' },
+      { name: 'Hard Gel', detail: 'Non-porous, lightweight extensions requiring filing for removal (3-5 weeks)' }
+    ],
+    idealFor: 'Natural nail protection, durable flexibility, and high-gloss finishes',
+    removalMethod: 'Acetone soak-off for soft gel and BIAB; professional filing for hard gel'
+  },
+  {
+    name: 'Acrylic Nails',
+    slug: 'acrylic-nails',
+    tag: 'Maximum Strength & Length',
+    mechanism: 'Chemical polymer reaction between liquid monomer and acrylic powder (air cured)',
+    wearTime: '2 to 3 weeks between fills; 2 to 3 months with proper maintenance',
+    subcategories: [
+      { name: 'Acrylic Overlays', detail: 'Reinforcing natural nail plate without extending length' },
+      { name: 'Sculpted Extensions', detail: 'Custom length created over nail forms' },
+      { name: 'Tip Extensions', detail: 'Glued plastic tips overlaid with acrylic compound' }
+    ],
+    idealFor: 'Extending short nails, dramatic lengths (coffin, stiletto), and heavy hand usage',
+    removalMethod: 'Careful acetone soak-off; must never be pried or ripped from natural nail'
+  },
+  {
+    name: 'Dip Powder Nails',
+    slug: 'dip-powder-nails',
+    tag: 'Odorless Long Wear',
+    mechanism: 'Medical-grade cyanoacrylate resin base coated with micronized colored acrylic powder',
+    wearTime: '3 to 4 weeks with minimal chipping',
+    subcategories: [
+      { name: 'Natural Dip Overlays', detail: 'Provides firm, chip-resistant armor over natural nails' },
+      { name: 'Dip with Tips', detail: 'Moderate extension using glued tips' }
+    ],
+    idealFor: 'Those seeking acrylic-level firmness without UV lamp exposure or monomer odors',
+    removalMethod: 'Warm acetone soak; requires gentle buffing of the top shine before soaking'
+  },
+  {
+    name: 'Press-On Nails',
+    slug: 'press-on-nails',
+    tag: 'Instant, Non-Damaging & Reusable',
+    mechanism: 'Pre-formed ABS plastic full-cover nails secured with adhesive tabs or cyanoacrylate glue',
+    wearTime: '1 to 3 days (adhesive tabs) or 1 to 2 weeks (nail glue)',
+    subcategories: [
+      { name: 'Temporary Wear', detail: 'Adhesive tabs for single-event or weekend wear' },
+      { name: 'Semi-Permanent Wear', detail: 'Dehydrated prep + nail glue for up to 14 days' }
+    ],
+    idealFor: 'Commitment-free nail art, quick changes, budget-conscious styling, and salon-free convenience',
+    removalMethod: 'Warm water, dish soap, and oil soak; fully non-damaging when removed without force'
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} canonicalURL={canonicalURL}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <Breadcrumbs items={[{ label: 'Nail Types' }]} />
+
+    <!-- HERO SECTION: Pillar 4 Single H1 -->
+    <header class="pt-6 pb-12 border-b border-stone-200/80">
+      <div class="max-w-3xl">
+        <span class="inline-block text-xs uppercase tracking-[0.2em] font-semibold text-[#B96655] mb-2 font-sans">
+          Topical Pillar &bull; Enhancements &amp; Chemistry
+        </span>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1C1917] leading-[1.12]">
+          Nail Types &amp; Enhancement Techniques
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed font-light">
+          Understanding nail enhancements begins with chemistry and structure. Different nail types serve different lifestyles: from flexible, light-cured builder gels to rigid acrylics, odorless dip powders, and reusable press-ons. Discover how each system bonds, wears, and removes safely.
+        </p>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-2">
+        <span class="text-xs font-semibold uppercase tracking-wider text-stone-500 self-center mr-2">Enhancement Systems:</span>
+        <a href="#gel-nails" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] transition-colors">Gel (Soft, BIAB, Hard)</a>
+        <a href="#acrylic-nails" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] transition-colors">Acrylic</a>
+        <a href="#dip-powder-nails" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] transition-colors">Dip Powder</a>
+        <a href="#press-on-nails" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] transition-colors">Press-Ons</a>
+      </div>
+    </header>
+
+    <!-- SECTION 1: Architectural Clarity: Nail Types vs. Art Styles -->
+    <section class="py-10 my-8 px-6 sm:px-10 rounded-3xl bg-[#FAF8F5] border border-stone-200">
+      <div class="max-w-3xl space-y-3">
+        <span class="text-[10px] uppercase tracking-widest font-bold text-[#B96655] font-sans">
+          TAXONOMY CLARIFICATION
+        </span>
+        <h2 class="font-serif text-2xl font-bold text-[#1C1917]">
+          What Counts as a Nail Type?
+        </h2>
+        <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+          Nail types describe <strong>structural enhancement mediums</strong>: how material bonds to the natural nail plate. Common designs such as <em>French tips</em>, <em>chrome glazes</em>, or <em>cat-eye magnetic effects</em> are <strong>art styles</strong>, not nail types. You can apply a French tip over acrylic, gel, or a press-on. For art styles, visit our <a href="/nail-designs/" class="text-[#B96655] font-semibold hover:underline">Nail Designs directory</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: The 4 Core Enhancement Systems -->
+    <section class="py-10">
+      <SectionHeading
+        kicker="SYSTEM BREAKDOWN"
+        title="Major Enhancement Profiles"
+        subtitle="Review curing chemistry, expected wear time, and removal protocols for each manicure type."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {enhancementTypes.map((type) => (
+          <article 
+            id={type.slug}
+            class="p-7 rounded-2xl bg-white border border-stone-200/80 flex flex-col justify-between editorial-card-shadow editorial-card-hover"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-stone-100 text-[#B96655]">
+                  {type.tag}
+                </span>
+                <span class="text-xs font-mono text-stone-500 font-medium">
+                  {type.wearTime}
+                </span>
+              </div>
+
+              <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#1C1917] mb-2">
+                {type.name}
+              </h2>
+
+              <p class="text-xs text-stone-600 leading-relaxed mb-4">
+                <strong>Mechanism:</strong> {type.mechanism}
+              </p>
+
+              <!-- Subcategories -->
+              <div class="pt-3 border-t border-stone-100 space-y-2 mb-4">
+                <span class="block text-[11px] font-bold uppercase tracking-wider text-stone-800">
+                  Variations &amp; Formulas:
+                </span>
+                {type.subcategories.map((sub) => (
+                  <div class="text-xs bg-[#FAF8F5] p-2.5 rounded-lg border border-stone-100">
+                    <span class="font-bold text-stone-900">{sub.name}:</span>{' '}
+                    <span class="text-stone-600">{sub.detail}</span>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Practical Attributes -->
+              <div class="space-y-2 text-xs pt-2 border-t border-stone-100">
+                <div>
+                  <span class="font-bold text-stone-900">Best Suited For:</span>{' '}
+                  <span class="text-stone-600">{type.idealFor}</span>
+                </div>
+                <div>
+                  <span class="font-bold text-stone-900">Removal Protocol:</span>{' '}
+                  <span class="text-stone-600">{type.removalMethod}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+              <span>Future Deep-Dive Guide</span>
+              <span class="text-[#B96655] font-semibold">Planned &rarr;</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- SECTION 3: Cross-Silo Connections -->
+    <section class="py-12 border-t border-stone-200/80">
+      <SectionHeading
+        kicker="RELATED GUIDES"
+        title="Maintaining Natural Nail Health"
+        subtitle="Every enhancement system requires responsible aftercare to prevent natural nail plate damage."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <a href="/nail-care/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Essential</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Nail Care &amp; Aftercare</h3>
+          <p class="text-xs text-stone-600 mt-1">Learn safe soak-off techniques and matrix hydration to avoid brittle peeling.</p>
+        </a>
+        <a href="/nail-products/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Tools</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Nail Products &amp; Equipment</h3>
+          <p class="text-xs text-stone-600 mt-1">Explore UV/LED lamp specifications, press-on kits, and cuticle oils.</p>
+        </a>
+        <a href="/nail-shapes/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Silhouettes</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Nail Shapes Guide</h3>
+          <p class="text-xs text-stone-600 mt-1">Match your enhancement type with strong apex shapes like almond and coffin.</p>
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

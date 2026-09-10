@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const pageTitle = 'Nail Care: Routines, Maintenance & Manicure Health | The Nail Edit';
+const pageDescription = 'Explore practical, evidence-based nail care routines, cuticle maintenance, and safe manicure aftercare to strengthen brittle nails and prevent plate damage.';
+const canonicalURL = new URL('/nail-care/', Astro.site || 'https://themaniedit.com');
+
+const carePillars = [
+  {
+    title: 'Daily Cuticle & Matrix Hydration',
+    tag: 'Hydration Routine',
+    summary: 'The living nail matrix produces keratin cells. Consistent application of small-molecule oils keeps the surrounding tissue pliable and reduces hangnails.',
+    actionSteps: [
+      'Apply jojoba or squalane-based cuticle oil at least twice daily',
+      'Massage gently into the eponychium to stimulate local circulation',
+      'Follow with a rich emollient hand cream to seal in hydration'
+    ]
+  },
+  {
+    title: 'Safe Mechanical Shaping',
+    tag: 'Edge Preservation',
+    summary: 'Improper filing is one of the primary causes of edge delamination and micro-tears in the keratin plate.',
+    actionSteps: [
+      'Use high-grit (240 grit or higher) or etched glass nail files',
+      'File in one direction from outer sidewall toward center rather than aggressive sawing',
+      'Avoid filing deeply into the lateral stress points where the nail leaves the finger'
+    ]
+  },
+  {
+    title: 'Barrier Protection & Moisture Defense',
+    tag: 'Environmental Defense',
+    summary: 'Frequent water exposure causes the nail plate to expand and contract, weakening the intercellular bonds between keratin layers.',
+    actionSteps: [
+      'Wear lined rubber gloves when washing dishes or handling household detergents',
+      'Allow natural nails to thoroughly dry before applying polish or enhancements',
+      'Apply a clear protective base coat to shield the natural plate from moisture loss'
+    ]
+  },
+  {
+    title: 'Non-Damaging Enhancement Aftercare',
+    tag: 'Safe Removal Protocols',
+    summary: 'Most nail damage attributed to gels or acrylics occurs during impatient, forceful removal rather than from the product itself.',
+    actionSteps: [
+      'Never peel, pry, or scrape lifted enhancements off the natural nail',
+      'Submerge in warm acetone wraps and allow product to soften completely',
+      'Allow short rest intervals between heavy enhancement applications when necessary'
+    ]
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} canonicalURL={canonicalURL}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <Breadcrumbs items={[{ label: 'Nail Care' }]} />
+
+    <!-- HERO SECTION: Pillar 5 Single H1 -->
+    <header class="pt-6 pb-12 border-b border-stone-200/80">
+      <div class="max-w-3xl">
+        <span class="inline-block text-xs uppercase tracking-[0.2em] font-semibold text-[#B96655] mb-2 font-sans">
+          Topical Pillar &bull; Health, Hygiene &amp; Maintenance
+        </span>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1C1917] leading-[1.12]">
+          Nail Care, Routines &amp; Healthy Maintenance
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed font-light">
+          A durable manicure always begins with a healthy foundation. Understanding basic keratin biology, cuticle hydration, and non-damaging removal protocols ensures your natural nail beds stay resilient beneath any polish or enhancement style.
+        </p>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-2">
+        <span class="text-xs font-semibold uppercase tracking-wider text-stone-500 self-center mr-2">Focus Topics:</span>
+        <a href="#hydration" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] transition-colors">Cuticle Hydration</a>
+        <a href="#filing" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] transition-colors">Protective Filing</a>
+        <a href="#brittle-nails" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] transition-colors">Brittle Nails</a>
+        <a href="#safe-removal" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] transition-colors">Removal Protocols</a>
+      </div>
+    </header>
+
+    <!-- SECTION 1: Evidence-Based Foundation Cards -->
+    <section class="py-14">
+      <SectionHeading
+        kicker="FOUNDATIONAL HABITS"
+        title="Core Pillars of Nail Maintenance"
+        subtitle="Simple, consistent cosmetic habits that preserve keratin integrity and prevent premature peeling."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {carePillars.map((pillar) => (
+          <article class="p-7 rounded-2xl bg-white border border-stone-200/80 flex flex-col justify-between editorial-card-shadow editorial-card-hover">
+            <div>
+              <span class="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-stone-100 text-[#B96655]">
+                {pillar.tag}
+              </span>
+              <h2 class="font-serif text-2xl font-bold text-[#1C1917] mt-3 mb-2">
+                {pillar.title}
+              </h2>
+              <p class="text-xs text-stone-600 leading-relaxed mb-4">
+                {pillar.summary}
+              </p>
+
+              <div class="pt-3 border-t border-stone-100">
+                <span class="block text-[11px] font-bold uppercase tracking-wider text-stone-800 mb-2 font-sans">
+                  Recommended Routine:
+                </span>
+                <ul class="space-y-1.5">
+                  {pillar.actionSteps.map((step) => (
+                    <li class="text-xs text-stone-600 flex items-start gap-2">
+                      <svg class="w-3.5 h-3.5 text-[#B96655] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>{step}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-3 border-t border-stone-100 text-[11px] text-stone-400">
+              Cosmetic Care Protocol &bull; Planned Future Guide
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- SECTION 2: Brittle Nails & Delamination Explained -->
+    <section id="brittle-nails" class="py-10 px-6 sm:px-10 rounded-3xl bg-[#FAF8F5] border border-stone-200 mb-14">
+      <div class="max-w-3xl space-y-4">
+        <span class="text-[10px] uppercase tracking-widest font-bold text-[#B96655] font-sans">
+          KERATIN BIOLOGY
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#1C1917]">
+          Why Do Nails Become Brittle or Split?
+        </h2>
+        <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+          The visible nail plate consists of roughly 25 to 50 compacted layers of dead, flattened keratin cells held together by delicate intercellular lipid layers. When nails undergo continuous cycles of wetting and air drying, or frequent contact with harsh detergents, these lipid cements degrade, resulting in split tips and peeling free edges.
+        </p>
+        <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+          Restoring nail flexibility requires lipid replenishment: applying pure jojoba oil (which closely mimics the skin’s natural sebum) allows deep penetration through the keratin matrix, restoring suppleness without relying on unproven hardeners.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Responsible Health Editorial Note -->
+    <section class="p-6 rounded-2xl bg-amber-50/60 border border-amber-200/80 mb-14 text-xs text-amber-900 leading-relaxed">
+      <div class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div>
+          <strong class="font-bold block mb-1">Cosmetic Information Disclaimer</strong>
+          The advice shared in The Nail Edit is intended for cosmetic nail care, grooming, and routine manicure maintenance. We do not provide medical diagnosis or dermatological treatment. If you experience persistent nail discoloration, severe thickening, swelling, or localized pain around your nail beds, consult a licensed healthcare professional or board-certified dermatologist.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Cross-Silo Interlinking -->
+    <section class="py-12 border-t border-stone-200/80">
+      <SectionHeading
+        kicker="EXPLORE MORE"
+        title="Pairing Nail Health With Manicures"
+        subtitle="Keep your nails thriving while exploring shapes, products, and enhancements."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <a href="/nail-types/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Technique</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Nail Types &amp; Systems</h3>
+          <p class="text-xs text-stone-600 mt-1">Review removal profiles of gel, acrylic, and dip powder to protect nail plates.</p>
+        </a>
+        <a href="/nail-products/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Tools</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Nail Products &amp; Oils</h3>
+          <p class="text-xs text-stone-600 mt-1">Learn what to look for in safe cuticle oils, glass files, and gentle removers.</p>
+        </a>
+        <a href="/nail-shapes/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Profiles</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Nail Shapes Guide</h3>
+          <p class="text-xs text-stone-600 mt-1">Choose snag-resistant profiles like squoval or oval when recovering from breakage.</p>
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,210 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import TableOfContents, { type HeadingItem } from '../components/TableOfContents.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import SchemaBreadcrumb from '../components/schema/SchemaBreadcrumb.astro';
+import SchemaArticle from '../components/schema/SchemaArticle.astro';
+import SchemaFAQ from '../components/schema/SchemaFAQ.astro';
+import type { ContentMeta, SiloSlug } from '../types/content';
+
+interface Props {
+  entry: {
+    data: ContentMeta;
+  };
+  headings?: HeadingItem[];
+}
+
+const { entry, headings = [] } = Astro.props;
+const { data } = entry;
+
+const SILO_DIRECTORY: Record<SiloSlug, { name: string; href: string }> = {
+  'nail-designs': { name: 'Nail Designs', href: '/nail-designs/' },
+  'nail-shapes': { name: 'Nail Shapes', href: '/nail-shapes/' },
+  'nail-colors': { name: 'Nail Colors', href: '/nail-colors/' },
+  'nail-types': { name: 'Nail Types', href: '/nail-types/' },
+  'nail-care': { name: 'Nail Care', href: '/nail-care/' },
+  'occasion-nails': { name: 'Occasion Nails', href: '/occasion-nails/' },
+  'seasonal-nails': { name: 'Seasonal Nails', href: '/seasonal-nails/' },
+  'nail-products': { name: 'Nail Products', href: '/nail-products/' },
+};
+
+const currentSilo = SILO_DIRECTORY[data.silo] || {
+  name: data.silo,
+  href: `/${data.silo}/`,
+};
+
+const siteOrigin = Astro.site?.origin || 'https://themaniedit.com';
+const canonicalURL = new URL(Astro.url.pathname, siteOrigin);
+const formattedPublishDate = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(new Date(data.publishDate));
+
+const formattedUpdatedDate = data.updatedDate
+  ? new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }).format(new Date(data.updatedDate))
+  : null;
+
+const breadcrumbsData = [
+  { label: currentSilo.name, href: currentSilo.href },
+  { label: data.title },
+];
+
+const schemaBreadcrumbs = [
+  { name: 'Home', item: `${siteOrigin}/` },
+  { name: currentSilo.name, item: `${siteOrigin}${currentSilo.href}` },
+  { name: data.title, item: canonicalURL.toString() },
+];
+---
+
+<BaseLayout
+  title={`${data.title} | The Nail Edit`}
+  description={data.metaDescription}
+  canonicalURL={canonicalURL}
+>
+  <!-- Schema Structured Data -->
+  <SchemaBreadcrumb breadcrumbs={schemaBreadcrumbs} />
+  <SchemaArticle
+    headline={data.title}
+    description={data.metaDescription}
+    datePublished={data.publishDate}
+    dateModified={data.updatedDate}
+    canonicalUrl={canonicalURL.toString()}
+  />
+  {data.faq && data.faq.length > 0 && <SchemaFAQ faqs={data.faq} />}
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <!-- 1. Breadcrumbs Navigation -->
+    <Breadcrumbs items={breadcrumbsData} />
+
+    <!-- Article Header -->
+    <header class="pt-4 pb-8 border-b border-stone-200/80">
+      <!-- Silo Tag & Publishing Dates -->
+      <div class="flex flex-wrap items-center gap-3 text-xs text-stone-500 mb-4 font-sans">
+        <a 
+          href={currentSilo.href}
+          class="px-2.5 py-1 rounded-full bg-[#F7F3EE] text-[#B96655] font-semibold uppercase tracking-wider hover:bg-stone-200/60 transition-colors"
+        >
+          {currentSilo.name}
+        </a>
+        <span>&bull;</span>
+        <time datetime={new Date(data.publishDate).toISOString()}>
+          {formattedPublishDate}
+        </time>
+        {formattedUpdatedDate && (
+          <>
+            <span>&bull;</span>
+            <span class="text-stone-400">Updated: {formattedUpdatedDate}</span>
+          </>
+        )}
+      </div>
+
+      <!-- 2. Single H1 on the entire article page -->
+      <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#1C1917] leading-[1.16]">
+        {data.title}
+      </h1>
+
+      <!-- 3. Lead Introduction -->
+      <p class="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed font-light">
+        {data.description}
+      </p>
+    </header>
+
+    <!-- 4. Hero Image (Astro:assets or string path, optimized, eager loaded, no layout shift) -->
+    {data.heroImage && (
+      <figure class="my-8 overflow-hidden rounded-2xl border border-stone-200/90 shadow-sm bg-stone-100">
+        {typeof data.heroImage === 'string' ? (
+          <img
+            src={data.heroImage}
+            alt={data.heroImageAlt}
+            loading="eager"
+            decoding="async"
+            width="900"
+            height="550"
+            class="w-full h-auto object-cover max-h-[500px]"
+          />
+        ) : (
+          <Image
+            src={data.heroImage}
+            alt={data.heroImageAlt}
+            loading="eager"
+            decoding="async"
+            width={900}
+            height={550}
+            class="w-full h-auto object-cover max-h-[500px]"
+          />
+        )}
+        {data.heroImageAlt && (
+          <figcaption class="px-4 py-2.5 bg-white text-xs text-stone-500 border-t border-stone-100 italic">
+            {data.heroImageAlt}
+          </figcaption>
+        )}
+      </figure>
+    )}
+
+    <!-- 6. Table of Contents (Only when meaningful H2/H3 exist) -->
+    <TableOfContents headings={headings} />
+
+    <!-- 5. Main Article Content -->
+    <div class="prose prose-stone max-w-none prose-headings:font-serif prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-[#1C1917] prose-h2:text-2xl prose-h2:sm:text-3xl prose-h2:mt-10 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-p:text-stone-700 prose-p:leading-relaxed prose-p:text-sm prose-p:sm:text-base prose-li:text-sm prose-li:sm:text-base prose-li:text-stone-700 prose-a:text-[#B96655] prose-a:underline hover:prose-a:text-stone-900">
+      <slot />
+    </div>
+
+    <!-- 8. FAQ Section (Only rendered when FAQ items exist in content data) -->
+    {data.faq && data.faq.length > 0 && (
+      <section class="mt-14 pt-10 border-t border-stone-200/80 not-prose" aria-labelledby="faq-section-heading">
+        <span class="text-[10px] uppercase tracking-widest font-semibold text-[#B96655] font-sans">
+          COMMONLY ASKED QUESTIONS
+        </span>
+        <h2 id="faq-section-heading" class="font-serif text-2xl sm:text-3xl font-bold text-[#1C1917] mt-1 mb-6">
+          Frequently Asked Questions
+        </h2>
+        <div class="space-y-4">
+          {data.faq.map((item) => (
+            <div class="p-5 rounded-2xl bg-white border border-stone-200/80">
+              <h3 class="font-serif text-lg font-bold text-[#1C1917] mb-2">
+                {item.question}
+              </h3>
+              <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                {item.answer}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- 7. Related Pages Component (Clean, non-combinatorial structured links) -->
+    <RelatedPages 
+      pages={data.relatedPages} 
+      siloName={currentSilo.name} 
+      siloUrl={currentSilo.href} 
+    />
+
+    <!-- 10. Navigation back to the Parent Silo -->
+    <div class="mt-14 pt-8 border-t border-stone-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 not-prose">
+      <a 
+        href={currentSilo.href}
+        class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#B96655] hover:text-stone-900 transition-colors"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Explore All {currentSilo.name} Guides</span>
+      </a>
+
+      <a 
+        href="#main-content"
+        class="text-xs font-medium text-stone-400 hover:text-stone-700 transition-colors"
+      >
+        Back to top &uarr;
+      </a>
+    </div>
+  </article>
+</BaseLayout>

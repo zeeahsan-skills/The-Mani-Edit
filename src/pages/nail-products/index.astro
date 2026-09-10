@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const pageTitle = 'Nail Products: Guides to Tools, Gel Lamps, Glues & Press-Ons | The Nail Edit';
+const pageDescription = 'Educational guide to nail products and tools: press-on nails, adhesive glues, UV/LED curing lamps, art brushes, and polish formulas. Clear buyer specifications.';
+const canonicalURL = new URL('/nail-products/', Astro.site || 'https://themaniedit.com');
+
+const productCategories = [
+  {
+    name: 'Press-On Nail Kits',
+    slug: 'press-on-nails',
+    tag: 'Wearable Enhancements',
+    specs: 'Molded ABS plastic or soft gel extensions with pre-designed or blank canvas finishes',
+    buyerChecklist: [
+      'Look for varied size ranges (at least 10 to 12 distinct tip sizes per set)',
+      'Choose sculpted C-curve apexes for natural nail bed contouring',
+      'Opt for thick free edges paired with tapered cuticle edges for realistic wear'
+    ],
+    safetyNote: 'Ensure sizing does not overlap onto sensitive lateral skin folds.'
+  },
+  {
+    name: 'Nail Adhesives & Glues',
+    slug: 'nail-glue',
+    tag: 'Bonding Agents',
+    specs: 'Medical or cosmetic grade ethyl cyanoacrylate with viscosity modifiers',
+    buyerChecklist: [
+      'Brush-on applicators provide far superior control compared to squeeze droppers',
+      'Quick-setting formulas bond in 15 to 30 seconds under gentle pressure',
+      'Look for moisture-resistant adhesives that prevent premature border lifting'
+    ],
+    safetyNote: 'Never force or rip glued tips; always dissolve with warm soapy water and oil or acetone.'
+  },
+  {
+    name: 'UV / LED Curing Lamps',
+    slug: 'gel-lamps',
+    tag: 'Photopolymerization Tools',
+    specs: 'Dual-wavelength light emitting diodes operating at 365nm and 405nm',
+    buyerChecklist: [
+      'Minimum 36W to 48W output for thorough, complete polymer conversion',
+      'Reflective metallic base plates ensure light bounces evenly to side walls',
+      'Look for automated low-heat modes to minimize sudden exothermic heat spikes'
+    ],
+    safetyNote: 'Under-cured gel polish is a leading cause of contact allergen sensitization.'
+  },
+  {
+    name: 'Nail Art Precision Tools',
+    slug: 'nail-art-tools',
+    tag: 'Creative Equipment',
+    specs: 'Synthetic kolinsky-style detail brushes, dotting styluses, and silicone stampers',
+    buyerChecklist: [
+      'Ultra-fine detail liners (7mm to 11mm brush hairs) for crisp French smiles',
+      'Dual-ended dotting tools with varied stainless steel ball diameters',
+      'High-density cosmetic sponge applicators for buffing mirror chrome powder'
+    ],
+    safetyNote: 'Clean synthetic brushes with isopropyl alcohol rather than pure acetone to prevent bristle fraying.'
+  },
+  {
+    name: 'Polish Formulations & Systems',
+    slug: 'polish-brands',
+    tag: 'Color & Base Systems',
+    specs: 'Solvent lacquers, non-toxic breathable formulas, and oligomer soak-off gels',
+    buyerChecklist: [
+      'High-pigment single-coat opacity reduces layering bulk and drying times',
+      'Non-yellowing optical brighteners in clear topcoats protect white and pastel manicures',
+      'Wide, curved paddle brushes enable smooth cuticle line distribution in fewer strokes'
+    ],
+    safetyNote: 'Ensure gel polishes are compatible with the specific output wavelengths of your curing lamp.'
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} canonicalURL={canonicalURL}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <Breadcrumbs items={[{ label: 'Nail Products' }]} />
+
+    <!-- HERO SECTION: Pillar 8 Single H1 -->
+    <header class="pt-6 pb-12 border-b border-stone-200/80">
+      <div class="max-w-3xl">
+        <span class="inline-block text-xs uppercase tracking-[0.2em] font-semibold text-[#B96655] mb-2 font-sans">
+          Topical Pillar &bull; Equipment, Formulas &amp; Specifications
+        </span>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1C1917] leading-[1.12]">
+          Nail Products, Tools &amp; Equipment Guide
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed font-light">
+          Navigating the nail market requires clear technical specifications rather than promotional hype. From curing lamp wavelengths and cyanoacrylate adhesive chemistries to high-grade press-on kits and precision art liners, discover how to evaluate tools and products for safety, durability, and performance.
+        </p>
+      </div>
+
+      <!-- Quick Jump Strip -->
+      <div class="mt-8 flex flex-wrap gap-2">
+        <span class="text-xs font-semibold uppercase tracking-wider text-stone-500 self-center mr-2">Product Topics:</span>
+        <a href="#press-on-nails" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] transition-colors">Press-On Kits</a>
+        <a href="#nail-glue" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] transition-colors">Adhesive Glues</a>
+        <a href="#gel-lamps" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] transition-colors">UV/LED Lamps</a>
+        <a href="#nail-art-tools" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] transition-colors">Precision Tools</a>
+        <a href="#polish-brands" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] transition-colors">Polish Formulations</a>
+      </div>
+    </header>
+
+    <!-- SECTION 1: Product Safety & Quality Architecture -->
+    <section class="py-12 border-b border-stone-200/80">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80">
+          <span class="text-xs font-mono uppercase tracking-wider text-[#B96655] font-semibold">01 / Photochemistry</span>
+          <h2 class="font-serif text-xl font-bold text-[#1C1917] mt-1 mb-2">Curing Lamp Safety</h2>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Gel polishes must cure to at least 85% to 90% polymerization. Under-cured soft gel leaves unreacted acrylates that can permeate skin barriers over time, leading to allergic sensitization.
+          </p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80">
+          <span class="text-xs font-mono uppercase tracking-wider text-[#B96655] font-semibold">02 / Adhesives</span>
+          <h2 class="font-serif text-xl font-bold text-[#1C1917] mt-1 mb-2">Cyanoacrylate Purity</h2>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Quality cosmetic nail glues contain stabilizers and purifiers that prevent rapid brittleness. Always check for tight brush-on sealing to prevent oxygen degradation inside the bottle.
+          </p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80">
+          <span class="text-xs font-mono uppercase tracking-wider text-[#B96655] font-semibold">03 / Tool Hygiene</span>
+          <h2 class="font-serif text-xl font-bold text-[#1C1917] mt-1 mb-2">Sanitization Protocols</h2>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Metal implements (cuticle pushers, nippers) require 70% isopropyl alcohol sanitization between uses. Non-porous glass files can be washed with warm soap and water without dulling.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: 5 Core Product Categories -->
+    <section class="py-14">
+      <SectionHeading
+        kicker="BUYER SPECIFICATIONS"
+        title="Tool &amp; Product Guides"
+        subtitle="Objective criteria, material standards, and safety precautions for building an effective manicure kit."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {productCategories.map((prod) => (
+          <article 
+            id={prod.slug}
+            class="p-7 rounded-2xl bg-white border border-stone-200/80 flex flex-col justify-between editorial-card-shadow editorial-card-hover"
+          >
+            <div>
+              <span class="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-stone-100 text-[#B96655]">
+                {prod.tag}
+              </span>
+              <h2 class="font-serif text-2xl font-bold text-[#1C1917] mt-3 mb-2">
+                {prod.name}
+              </h2>
+              <p class="text-xs text-stone-600 leading-relaxed mb-4">
+                <strong>Specs:</strong> {prod.specs}
+              </p>
+
+              <div class="pt-3 border-t border-stone-100 space-y-2 mb-4">
+                <span class="block text-[11px] font-bold uppercase tracking-wider text-stone-800">
+                  Buyer Considerations:
+                </span>
+                <ul class="space-y-1.5">
+                  {prod.buyerChecklist.map((item) => (
+                    <li class="text-xs text-stone-600 flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-[#B96655] mt-1 flex-shrink-0"></span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="p-3 rounded-lg bg-stone-50 border border-stone-200/60 text-xs text-stone-600">
+                <strong class="text-stone-800 block mb-0.5">Safety Precaution:</strong>
+                {prod.safetyNote}
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+              <span>Product Spec Guide</span>
+              <span class="text-[#B96655] font-semibold">Planned &rarr;</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- SECTION 3: Editorial Transparency Note -->
+    <section class="p-6 rounded-2xl bg-[#FAF8F5] border border-stone-200 mb-14 text-xs text-stone-600 leading-relaxed">
+      <div class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-stone-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+        <div>
+          <strong class="font-bold text-stone-900 block mb-1">Editorial Integrity &amp; Sourcing Standards</strong>
+          The Nail Edit provides objective, educational specification breakdowns for tools and cosmetic products. We do not claim first-hand testing or lab certification unless explicitly documented. Our product guidance is focused on chemistry standards, practical ergonomic usability, and safe cosmetic maintenance.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Cross-Silo Connections -->
+    <section class="py-12 border-t border-stone-200/80">
+      <SectionHeading
+        kicker="EXPLORE MORE"
+        title="Put Your Tools to Work"
+        subtitle="Learn how proper equipment supports nail types, designs, and natural nail health."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <a href="/nail-types/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Applications</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Nail Types Directory</h3>
+          <p class="text-xs text-stone-600 mt-1">Understand the chemical differences between acrylic, gel, and dip powder systems.</p>
+        </a>
+        <a href="/nail-care/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Health</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Nail Care &amp; Maintenance</h3>
+          <p class="text-xs text-stone-600 mt-1">Discover proper cuticle oil application and safe product removal routines.</p>
+        </a>
+        <a href="/nail-designs/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Artistry</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Nail Designs Gallery</h3>
+          <p class="text-xs text-stone-600 mt-1">Find inspiring art ideas to create with your fine line brushes and chrome powders.</p>
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

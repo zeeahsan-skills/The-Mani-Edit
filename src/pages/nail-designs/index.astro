@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const pageTitle = 'Nail Designs: Inspiring Art, Trends & Manicure Styles | The Nail Edit';
+const pageDescription = 'Explore curated nail designs from minimal short nails and classy neutrals to glazed chrome, French tips, and gradient ombré. Find your next manicure style.';
+const canonicalURL = new URL('/nail-designs/', Astro.site || 'https://themaniedit.com');
+
+const designCategories = [
+  {
+    name: 'Short Nails',
+    tag: 'Length Focus',
+    description: 'Neat, functional, and stylish nail art calibrated specifically for active fingertips and natural nail lengths.',
+    highlights: ['Micro-line accents', 'Clean negative space', 'Single-finger statement dots', 'Monochrome sheers'],
+    vibe: 'Practical & refined'
+  },
+  {
+    name: 'Simple Nails',
+    tag: 'Minimalist Aesthetic',
+    description: 'Understated elegance prioritizing pristine nail prep, neutral bases, and delicate line work over heavy ornamentation.',
+    highlights: ['Barely-there pinks', 'Geometric fine lines', 'Subtle cuticle cuffs', 'Milky glazes'],
+    vibe: 'Effortless everyday'
+  },
+  {
+    name: 'Cute Nails',
+    tag: 'Playful Art',
+    description: 'Charming illustrative accents, pastel gradients, and cheerful decorative motifs that bring a smile.',
+    highlights: ['Micro florals', 'Pastel swirls', 'Dainty heart accents', 'Faceted fruit art'],
+    vibe: 'Whimsical & expressive'
+  },
+  {
+    name: 'Classy Nails',
+    tag: 'Timeless Elegance',
+    description: 'Sophisticated manicures that transition effortlessly from executive boardrooms to black-tie evening events.',
+    highlights: ['Soft neutral tones', 'Half-moon manicures', 'Subtle gold foil borders', 'Deep berry cremes'],
+    vibe: 'Polished & elevated'
+  },
+  {
+    name: 'French Tip Nails',
+    tag: 'Modern Classic Design',
+    description: 'The iconic smile-line design reimagined with ultra-fine micro edges, inverted arches, and tonal color tips.',
+    highlights: ['Ultra-fine micro French', 'Deep V-cut arches', 'Color-block tips', 'Double-line French'],
+    vibe: 'Enduring & versatile'
+  },
+  {
+    name: 'Chrome Nails',
+    tag: 'High-Shine Powder Finish',
+    description: 'Ultra-fine cosmetic chrome powders buffed into no-wipe gel topcoats to create glazed, pearlescent, or metallic sheen.',
+    highlights: ['Glazed donut sheer', 'Rose gold mirror sheen', 'Liquid chrome drips', 'Holographic dust'],
+    vibe: 'Futuristic & luminous'
+  },
+  {
+    name: 'Ombre Nails',
+    tag: 'Seamless Gradients',
+    description: 'Soft transitions between two or more hues, blending seamlessly across the nail plate without harsh demarcations.',
+    highlights: ['Baby boomer pink-to-white', 'Blush aura centers', 'Sunset color fades', 'Matte gradient fades'],
+    vibe: 'Dreamy & dimensional'
+  },
+  {
+    name: 'Glitter Nails',
+    tag: 'Shimmer & Dimensional Sparkle',
+    description: 'From whisper-soft reflective micro-glitter to chunky encapsulated flakes focused around cuticles or tips.',
+    highlights: ['Reflective flash polish', 'Glitter cascade ombré', 'Encapsulated celestial stars', 'Fine shimmer overlays'],
+    vibe: 'Festive & eye-catching'
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} canonicalURL={canonicalURL}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <Breadcrumbs items={[{ label: 'Nail Designs' }]} />
+
+    <!-- HERO SECTION: Pillar 1 Single H1 -->
+    <header class="pt-6 pb-12 border-b border-stone-200/80">
+      <div class="max-w-3xl">
+        <span class="inline-block text-xs uppercase tracking-[0.2em] font-semibold text-[#B96655] mb-2 font-sans">
+          Topical Pillar &bull; Nail Art &amp; Finishes
+        </span>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1C1917] leading-[1.12]">
+          Nail Designs &amp; Manicure Styles
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed font-light">
+          From discreet micro French tips to high-shine glazed chrome powders and blended ombré gradients, nail art has transformed into a personal style canvas. Explore our comprehensive design directory structured by aesthetic mood, technique complexity, and practical nail length.
+        </p>
+      </div>
+
+      <!-- Quick Concept Anchors -->
+      <div class="mt-8 flex flex-wrap gap-2">
+        <span class="text-xs font-semibold uppercase tracking-wider text-stone-500 self-center mr-2">Featured Styles:</span>
+        <a href="#short-nails" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] hover:text-[#B96655] transition-colors">Short Nails</a>
+        <a href="#simple-nails" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] hover:text-[#B96655] transition-colors">Simple Nails</a>
+        <a href="#french-tip-nails" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] hover:text-[#B96655] transition-colors">French Tips</a>
+        <a href="#chrome-nails" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] hover:text-[#B96655] transition-colors">Chrome Finishes</a>
+        <a href="#ombre-nails" class="px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] hover:text-[#B96655] transition-colors">Ombré</a>
+      </div>
+    </header>
+
+    <!-- SECTION 1: The Design Categories Grid -->
+    <section class="py-14">
+      <SectionHeading
+        kicker="DISCOVERY DIRECTORY"
+        title="Explore Nail Design Styles"
+        subtitle="Each design category caters to different lifestyle demands and aesthetic tastes. Review key highlights, recommended finishes, and style characteristics below."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {designCategories.map((cat) => (
+          <article 
+            id={cat.name.toLowerCase().replace(/\s+/g, '-')}
+            class="p-6 rounded-2xl bg-white border border-stone-200/80 flex flex-col justify-between editorial-card-shadow editorial-card-hover"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-[#FAF8F5] text-[#B96655] border border-stone-200/60">
+                  {cat.tag}
+                </span>
+                <span class="text-[11px] text-stone-400 italic">
+                  {cat.vibe}
+                </span>
+              </div>
+              <h2 class="font-serif text-2xl font-bold text-[#1C1917] mb-2">
+                {cat.name}
+              </h2>
+              <p class="text-xs text-stone-600 leading-relaxed mb-4">
+                {cat.description}
+              </p>
+
+              <div class="pt-3 border-t border-stone-100">
+                <span class="block text-[11px] font-semibold uppercase tracking-wider text-stone-500 mb-1.5 font-sans">
+                  Signature Elements
+                </span>
+                <ul class="space-y-1">
+                  {cat.highlights.map((item) => (
+                    <li class="text-xs text-stone-600 flex items-center gap-1.5">
+                      <span class="w-1 h-1 rounded-full bg-[#B96655]"></span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+              <span>Future In-Depth Guide</span>
+              <span class="text-[#B96655] font-semibold">Planned &rarr;</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- SECTION 2: Technical Editorial Note (Style vs Type Clarification) -->
+    <section class="py-10 px-6 sm:px-10 rounded-3xl bg-stone-100/60 border border-stone-200/90 mb-14">
+      <div class="max-w-3xl space-y-3">
+        <span class="text-[10px] uppercase tracking-widest font-bold text-[#B96655] font-sans">
+          EDITORIAL CLARITY NOTE
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#1C1917]">
+          Design Finishes vs. Nail Enhancement Types
+        </h2>
+        <p class="text-sm text-stone-600 leading-relaxed">
+          In online manicure discussions, design finishes like <strong>French tips</strong> or <strong>chrome powder</strong> are occasionally mislabeled as "nail types." At The Nail Edit, we maintain clear architectural taxonomy: French tip and chrome are surface styling techniques. They can be applied on top of natural nails, soft gel, acrylic extensions, or dip powder overlays. For structural application methods, consult our <a href="/nail-types/" class="text-[#B96655] font-semibold hover:underline">Nail Types pillar</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Cross-Silo Recommendations -->
+    <section class="py-12 border-t border-stone-200/80">
+      <SectionHeading
+        kicker="CONNECTED INSPIRATION"
+        title="Pairing Your Nail Design"
+        subtitle="A cohesive manicure balances shape, color tone, and occasion."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="/nail-shapes/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Step 1: Silhouette</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Find Your Nail Shape</h3>
+          <p class="text-xs text-stone-600 mt-1">Balance almond, square, or oval tips to complement your chosen art.</p>
+        </a>
+        <a href="/nail-colors/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Step 2: Palette</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Explore Polish Colors</h3>
+          <p class="text-xs text-stone-600 mt-1">Select sheer nudes, bold reds, or moody dark bases for your art.</p>
+        </a>
+        <a href="/occasion-nails/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Step 3: Context</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Occasion Styling</h3>
+          <p class="text-xs text-stone-600 mt-1">Fine-tune your manicure for bridal events, birthdays, or everyday wear.</p>
+        </a>
+        <a href="/nail-care/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Step 4: Maintenance</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Nail Care &amp; Health</h3>
+          <p class="text-xs text-stone-600 mt-1">Prevent premature lifting and maintain cuticle hydration under your art.</p>
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

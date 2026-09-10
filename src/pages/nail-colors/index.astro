@@ -1,0 +1,257 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const pageTitle = 'Nail Colors: Curated Polish Palettes, Undertones & Moods | The Nail Edit';
+const pageDescription = 'Explore curated nail polish color palettes from sheer pinks and timeless reds to rich browns and cool blues. Find your ideal undertones, finishes, and shades.';
+const canonicalURL = new URL('/nail-colors/', Astro.site || 'https://themaniedit.com');
+
+const colorGuides = [
+  {
+    name: 'Pink',
+    slug: 'pink',
+    hex: '#F6C1CC',
+    accentHex: '#E098A8',
+    category: 'The Versatile Foundation',
+    undertones: 'From cool bubblegum and dusty mauve to warm peachy blush and electric fuchsia.',
+    finishRecommendations: 'Sheer jelly, milky creme, glazed chrome topper',
+    bestFor: 'Bridal events, clean-girl aesthetics, professional settings',
+    seasonalSynergy: 'Universal year-round; light pinks in Spring, neon in Summer'
+  },
+  {
+    name: 'Red',
+    slug: 'red',
+    hex: '#C02626',
+    accentHex: '#991B1B',
+    category: 'The Enduring Statement',
+    undertones: 'Blue-based cherry reds (cool), tomato orange-reds (warm), and deep Bordeaux (neutral deep).',
+    finishRecommendations: 'High-gloss creme, deep jelly syrup, rich velvet shimmer',
+    bestFor: 'Power dressing, romantic occasions, holiday celebrations',
+    seasonalSynergy: 'Bright poppy in Summer, deep crimson in Fall and Winter'
+  },
+  {
+    name: 'Black',
+    slug: 'black',
+    hex: '#18181B',
+    accentHex: '#3F3F46',
+    category: 'Chic Modern Contrast',
+    undertones: 'True onyx, obsidian with blue micro-shimmer, charcoal smoke.',
+    finishRecommendations: 'Patent-leather ultra-gloss, soft velvety matte, negative-space micro French',
+    bestFor: 'Minimalist graphic art, evening events, modern fashion-forward manicures',
+    seasonalSynergy: 'Fall and Winter staple; striking negative space in Spring'
+  },
+  {
+    name: 'White',
+    slug: 'white',
+    hex: '#F8FAFC',
+    accentHex: '#E2E8F0',
+    category: 'Crisp & Refreshing',
+    undertones: 'Soft milky coconut, pure stark white, creamy ivory, pearlescent shimmer.',
+    finishRecommendations: 'Semi-opaque milky glaze, crisp high-pigment linework, pearl luster',
+    bestFor: 'Summer beach getaways, bridal French tips, modern negative space',
+    seasonalSynergy: 'Peak Summer and Winter wonderland aesthetics'
+  },
+  {
+    name: 'Nude',
+    slug: 'nude',
+    hex: '#E2CEBF',
+    accentHex: '#C7AC9B',
+    category: 'Quiet Luxury',
+    undertones: 'Bisque, sand, sheer almond, warm toffee, rich espresso-tinted tan.',
+    finishRecommendations: 'Semi-sheer jelly, cushion creme, subtle tone-on-tone French',
+    bestFor: 'Flawless everyday wear, professional interviews, low-maintenance growth',
+    seasonalSynergy: 'Effortless all four seasons'
+  },
+  {
+    name: 'Blue',
+    slug: 'blue',
+    hex: '#7FA1C3',
+    accentHex: '#557C93',
+    category: 'Cool & Expressive',
+    undertones: 'Powder baby blue, vibrant cobalt, stormy slate, rich royal, deep midnight navy.',
+    finishRecommendations: 'Creamy pastel, cat-eye magnetic shimmer, jelly glazed',
+    bestFor: 'Modern accent nails, beach holidays, something-blue bridal details',
+    seasonalSynergy: 'Pastel sky in Spring, cobalt in Summer, deep navy in Winter'
+  },
+  {
+    name: 'Brown',
+    slug: 'brown',
+    hex: '#8C624A',
+    accentHex: '#684532',
+    category: 'Warm Sophistication',
+    undertones: 'Caramel latte, warm chestnut, deep espresso, rich bittersweet chocolate.',
+    finishRecommendations: 'High-shine creme, tortoise shell layered jelly, matte suede',
+    bestFor: 'Cozy seasonal transitions, neutral alternative to black, vintage aesthetics',
+    seasonalSynergy: 'The defining palette of Autumn; rich mocha in Winter'
+  },
+  {
+    name: 'Green',
+    slug: 'green',
+    hex: '#5F8D76',
+    accentHex: '#3E6652',
+    category: 'Botanical & Earthy',
+    undertones: 'Muted sage, fresh olive, vibrant matcha, rich jewel-toned emerald, deep forest.',
+    finishRecommendations: 'Earthy creme, chrome glazed over sage, deep magnetic shimmer',
+    bestFor: 'Nature-inspired accents, modern understated color lovers, holiday elegance',
+    seasonalSynergy: 'Soft sage in Spring; deep emerald in holiday and Winter seasons'
+  },
+  {
+    name: 'Purple',
+    slug: 'purple',
+    hex: '#9F86C0',
+    accentHex: '#7A5E9E',
+    category: 'Dreamy & Whimsical',
+    undertones: 'Delicate lavender, soft lilac, vibrant orchid, rich plum, midnight violet.',
+    finishRecommendations: 'Aura blush ombré, jelly syrup finish, iridescent shimmer',
+    bestFor: 'Creative art, springtime florals, moody Autumn plum accents',
+    seasonalSynergy: 'Lilac in Spring; dark black-cherry plum in late Fall'
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} canonicalURL={canonicalURL}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <Breadcrumbs items={[{ label: 'Nail Colors' }]} />
+
+    <!-- HERO SECTION: Pillar 3 Single H1 -->
+    <header class="pt-6 pb-12 border-b border-stone-200/80">
+      <div class="max-w-3xl">
+        <span class="inline-block text-xs uppercase tracking-[0.2em] font-semibold text-[#B96655] mb-2 font-sans">
+          Topical Pillar &bull; Polish Palettes &amp; Undertones
+        </span>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1C1917] leading-[1.12]">
+          Nail Colors &amp; Polish Palettes
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed font-light">
+          Choosing the right nail color is an art of undertones, skin harmony, and aesthetic intention. Rather than an arbitrary list of shades, our curated color directory breaks down nine definitive color families with advice on opacity, finish chemistry, and seasonal resonance.
+        </p>
+      </div>
+
+      <!-- Quick Jump Swatches -->
+      <div class="mt-8 flex flex-wrap items-center gap-2">
+        <span class="text-xs font-semibold uppercase tracking-wider text-stone-500 mr-2">Color Families:</span>
+        {colorGuides.map((col) => (
+          <a 
+            href={`#${col.slug}`} 
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-white border border-stone-200 hover:border-[#B96655] transition-colors"
+          >
+            <span class="w-2.5 h-2.5 rounded-full" style={`background-color: ${col.hex};`}></span>
+            <span>{col.name}</span>
+          </a>
+        ))}
+      </div>
+    </header>
+
+    <!-- SECTION 1: Color Theory & Finish Science -->
+    <section class="py-12 border-b border-stone-200/80">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80">
+          <span class="text-xs font-mono uppercase tracking-wider text-[#B96655] font-semibold">01 / Undertones</span>
+          <h2 class="font-serif text-xl font-bold text-[#1C1917] mt-1 mb-2">Skin Tone Harmony</h2>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Cool undertones flourish with blue-based berries and crisp chalk whites. Warm skin tones glow against terracotta nudes, coral reds, and olive greens. Neutral undertones carry both with ease.
+          </p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80">
+          <span class="text-xs font-mono uppercase tracking-wider text-[#B96655] font-semibold">02 / Opacity</span>
+          <h2 class="font-serif text-xl font-bold text-[#1C1917] mt-1 mb-2">Sheer Jelly vs. Opaque Creme</h2>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Sheer jelly polishes allow the natural smile line to show through, creating a soft, luminous cushion effect. Full-coverage cremes deliver high-impact graphic saturation in two coats.
+          </p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80">
+          <span class="text-xs font-mono uppercase tracking-wider text-[#B96655] font-semibold">03 / Texture</span>
+          <h2 class="font-serif text-xl font-bold text-[#1C1917] mt-1 mb-2">Topcoat Alchemy</h2>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            A single base shade transforms depending on the topcoat. Glossy gel gives a wet glass appearance, matte velvet absorbs light for a modern look, and chrome powder infuses metallic luminosity.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: 9 Curated Color Family Guides -->
+    <section class="py-14">
+      <SectionHeading
+        kicker="PALETTE DIRECTORY"
+        title="The Nine Color Edits"
+        subtitle="Explore specific shade depths, finish pairings, and lifestyle applications across our core color spectrum."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {colorGuides.map((col) => (
+          <article 
+            id={col.slug}
+            class="p-6 rounded-2xl bg-white border border-stone-200/80 flex flex-col justify-between editorial-card-shadow editorial-card-hover"
+          >
+            <div>
+              <!-- Swatch Header -->
+              <div 
+                class="w-full h-24 rounded-xl mb-4 p-3 flex flex-col justify-between relative overflow-hidden border border-stone-200/60"
+                style={`background: linear-gradient(135deg, ${col.hex} 0%, ${col.accentHex} 100%);`}
+              >
+                <div class="w-full h-1/2 bg-gradient-to-b from-white/25 to-transparent rounded-t"></div>
+                <div class="flex items-center justify-between text-white drop-shadow-sm text-xs font-mono">
+                  <span class="bg-black/40 px-2 py-0.5 rounded backdrop-blur-xs">{col.hex}</span>
+                  <span class="bg-black/40 px-2 py-0.5 rounded backdrop-blur-xs">Palette</span>
+                </div>
+              </div>
+
+              <span class="text-[11px] font-semibold uppercase tracking-wider text-[#B96655] block mb-1">
+                {col.category}
+              </span>
+              <h2 class="font-serif text-2xl font-bold text-[#1C1917] mb-2">
+                {col.name} Nails
+              </h2>
+              <p class="text-xs text-stone-600 leading-relaxed mb-4">
+                <strong>Spectrum:</strong> {col.undertones}
+              </p>
+
+              <div class="space-y-2 pt-3 border-t border-stone-100 text-xs">
+                <div>
+                  <span class="font-bold text-stone-900 block">Recommended Finishes:</span>
+                  <span class="text-stone-600">{col.finishRecommendations}</span>
+                </div>
+                <div>
+                  <span class="font-bold text-stone-900 block">Seasonal Synergy:</span>
+                  <span class="text-stone-600">{col.seasonalSynergy}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+              <span>Future In-Depth Guide</span>
+              <span class="text-[#B96655] font-semibold">Planned &rarr;</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- SECTION 3: Cross-Silo Connections -->
+    <section class="py-12 border-t border-stone-200/80">
+      <SectionHeading
+        kicker="EXPLORE MORE"
+        title="Harmonize Color With Design &amp; Season"
+        subtitle="Take your palette further by exploring artistic designs or syncing with seasonal calendars."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <a href="/nail-designs/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Technique</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Nail Designs Directory</h3>
+          <p class="text-xs text-stone-600 mt-1">See how chrome powders, ombré fades, and French tips elevate core colors.</p>
+        </a>
+        <a href="/seasonal-nails/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Calendar</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Seasonal Nail Ideas</h3>
+          <p class="text-xs text-stone-600 mt-1">Explore timely shade transitions from Spring pastels to Autumn burnt hues.</p>
+        </a>
+        <a href="/occasion-nails/" class="p-5 rounded-xl bg-white border border-stone-200 hover:border-[#B96655] transition-colors group">
+          <span class="text-[10px] uppercase font-bold text-stone-400">Styling</span>
+          <h3 class="font-serif text-lg font-bold text-[#1C1917] group-hover:text-[#B96655] transition-colors mt-1">Occasion Manicures</h3>
+          <p class="text-xs text-stone-600 mt-1">Match your shade with bridal gowns, evening attire, or everyday denim.</p>
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
