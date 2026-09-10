@@ -35,7 +35,7 @@ const currentSilo = SILO_DIRECTORY[data.silo] || {
   href: `/${data.silo}/`,
 };
 
-const siteOrigin = Astro.site?.origin || 'https://themaniedit.com';
+const siteOrigin = Astro.site?.origin || 'https://nailedits.site';
 const canonicalURL = new URL(Astro.url.pathname, siteOrigin);
 const formattedPublishDate = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
@@ -64,7 +64,7 @@ const schemaBreadcrumbs = [
 ---
 
 <BaseLayout
-  title={`${data.title} | The Nail Edit`}
+  title={data.seoTitle || `${data.title} | The Nail Edit`}
   description={data.metaDescription}
   canonicalURL={canonicalURL}
 >

@@ -2,7 +2,7 @@
 
 **Project:** The Nail Edit  
 **Entity:** Nails (Nail designs, shapes, colors, types, care, occasions, seasons, products)  
-**Date:** March 2026  
+**Date:** September 2026  
 **Audience:** Primarily English-speaking users seeking manicure inspiration, shape advice, healthy nail care, and equipment guidance.
 
 ---

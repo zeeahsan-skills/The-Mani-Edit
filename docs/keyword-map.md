@@ -1,8 +1,8 @@
 # SEO Content & Keyword Mapping Strategy
 
-**Project:** The Nail Edit (`themaniedit.com`)  
+**Project:** The Nail Edit (`nailedits.site`)  
 **Primary Entity:** Nails  
-**Date:** March 2026  
+**Date:** September 2026  
 **Methodology:** Intent-First Architecture (One Page = One Primary Intent), Cannibalization Prevention, Strict Attribute Combination Governance.
 
 ---

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://themaniedit.com/sitemap-index.xml
+Sitemap: https://nailedits.site/sitemap-index.xml

@@ -27,6 +27,8 @@ export const nailContentSchema = ({ image }: { image: () => any }) =>
       .min(5, 'Title must be at least 5 characters')
       .max(100, 'Title should stay within 100 characters for search displays'),
 
+    seoTitle: z.string().optional(),
+
     description: z
       .string()
       .min(10, 'Description must be at least 10 characters'),

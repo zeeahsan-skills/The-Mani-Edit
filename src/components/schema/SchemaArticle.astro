@@ -13,7 +13,7 @@ const {
   description,
   datePublished,
   dateModified,
-  image = 'https://themaniedit.com/images/the-mani-edit-og.jpg',
+  image = 'https://nailedits.site/images/the-nail-edit-og.jpg',
   canonicalUrl,
 } = Astro.props;
 
@@ -26,21 +26,21 @@ const schemaData = {
   },
   headline,
   description,
-  image: image.startsWith('http') ? image : `https://themaniedit.com${image}`,
+  image: image.startsWith('http') ? image : `https://nailedits.site${image}`,
   datePublished: new Date(datePublished).toISOString(),
   dateModified: dateModified ? new Date(dateModified).toISOString() : new Date(datePublished).toISOString(),
   author: {
     '@type': 'Organization',
     name: 'The Nail Edit Editorial Team',
-    url: 'https://themaniedit.com/about/',
+    url: 'https://nailedits.site/about/',
   },
   publisher: {
     '@type': 'Organization',
     name: 'The Nail Edit',
-    url: 'https://themaniedit.com/',
+    url: 'https://nailedits.site/',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://themaniedit.com/favicon.svg',
+      url: 'https://nailedits.site/favicon.svg',
     },
   },
 };

@@ -28,6 +28,7 @@ export interface RelatedPage {
 
 export interface ContentMeta {
   title: string;
+  seoTitle?: string;
   description: string;
   metaDescription: string;
   primaryKeyword: string;

@@ -14,12 +14,14 @@ interface Props {
 const {
   title = 'The Nail Edit | Nail Designs, Ideas & Polish Inspiration',
   description = 'Discover curated nail designs, trending nail shapes, polish colors, and essential nail care guides. Find your next manicure inspiration at The Nail Edit.',
-  canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://themaniedit.com'),
-  ogImage = '/images/the-mani-edit-og.jpg',
+  canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://nailedits.site/'),
+  ogImage = '/images/the-nail-edit-og.jpg',
   noindex = false,
 } = Astro.props;
 
 const siteName = 'The Nail Edit';
+const siteUrl = Astro.site || 'https://nailedits.site/';
+const absoluteOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteUrl).toString();
 ---
 
 <!doctype html>
@@ -51,13 +53,13 @@ const siteName = 'The Nail Edit';
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={absoluteOgImage} />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={absoluteOgImage} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
