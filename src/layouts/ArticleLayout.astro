@@ -76,6 +76,7 @@ const schemaBreadcrumbs = [
     datePublished={data.publishDate}
     dateModified={data.updatedDate}
     canonicalUrl={canonicalURL.toString()}
+    author={data.author}
   />
   {data.faq && data.faq.length > 0 && <SchemaFAQ faqs={data.faq} />}
 
@@ -93,6 +94,12 @@ const schemaBreadcrumbs = [
         >
           {currentSilo.name}
         </a>
+        {data.author && (
+          <>
+            <span>&bull;</span>
+            <span class="font-medium text-stone-700">By {data.author}</span>
+          </>
+        )}
         <span>&bull;</span>
         <time datetime={new Date(data.publishDate).toISOString()}>
           {formattedPublishDate}

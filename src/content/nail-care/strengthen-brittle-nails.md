@@ -7,6 +7,7 @@ primaryKeyword: "how to strengthen brittle nails"
 silo: "nail-care"
 heroImage: "../../assets/images/strengthen-brittle-nails-hero.jpg"
 heroImageAlt: "Close-up of natural hands massaging nourishing oil into the cuticle area and bare nails during a gentle nail-care routine"
+author: "The Nail Edit Editorial Team"
 publishDate: 2026-09-10
 relatedPages:
   - title: "Nail Care & Health Directory"

@@ -22,6 +22,14 @@ const {
 const siteName = 'The Nail Edit';
 const siteUrl = Astro.site || 'https://nailedits.site/';
 const absoluteOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteUrl).toString();
+const requestHostname = Astro.url?.hostname || (Astro.site ? new URL(Astro.site).hostname : '');
+const isVercelDomain =
+  requestHostname.endsWith('.vercel.app') ||
+  requestHostname === 'vercel.app' ||
+  (typeof (globalThis as any).process !== 'undefined' &&
+    Boolean((globalThis as any).process.env?.VERCEL_URL && (globalThis as any).process.env.VERCEL_URL.includes('vercel.app')));
+
+const shouldNoIndex = noindex || isVercelDomain;
 ---
 
 <!doctype html>
@@ -35,8 +43,19 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, 
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
-    {!noindex && <meta name="robots" content="index, follow" />}
+    {shouldNoIndex && <meta name="robots" content="noindex, nofollow" />}
+    {!shouldNoIndex && <meta name="robots" content="index, follow" />}
+    <script is:inline>
+      if (window.location.hostname.endsWith('.vercel.app')) {
+        let meta = document.querySelector('meta[name="robots"]');
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.name = 'robots';
+          document.head.appendChild(meta);
+        }
+        meta.content = 'noindex, nofollow';
+      }
+    </script>
 
     <!-- Google Fonts Preconnect & Stylesheet (Editorial Serifs & Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

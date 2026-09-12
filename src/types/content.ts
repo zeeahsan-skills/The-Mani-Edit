@@ -35,6 +35,7 @@ export interface ContentMeta {
   silo: SiloSlug;
   heroImage?: string;
   heroImageAlt: string;
+  author?: string;
   publishDate: Date;
   updatedDate?: Date;
   relatedPages: RelatedPage[];

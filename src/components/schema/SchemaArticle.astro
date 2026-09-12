@@ -6,6 +6,7 @@ interface Props {
   dateModified?: Date | string;
   image?: string;
   canonicalUrl: string;
+  author?: string;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   dateModified,
   image = 'https://nailedits.site/images/the-nail-edit-og.jpg',
   canonicalUrl,
+  author,
 } = Astro.props;
 
 const schemaData = {
@@ -29,11 +31,16 @@ const schemaData = {
   image: image.startsWith('http') ? image : `https://nailedits.site${image}`,
   datePublished: new Date(datePublished).toISOString(),
   dateModified: dateModified ? new Date(dateModified).toISOString() : new Date(datePublished).toISOString(),
-  author: {
-    '@type': 'Organization',
-    name: 'The Nail Edit Editorial Team',
-    url: 'https://nailedits.site/about/',
-  },
+  author: author
+    ? {
+        '@type': 'Person',
+        name: author,
+      }
+    : {
+        '@type': 'Organization',
+        name: 'The Nail Edit Editorial Team',
+        url: 'https://nailedits.site/about/',
+      },
   publisher: {
     '@type': 'Organization',
     name: 'The Nail Edit',

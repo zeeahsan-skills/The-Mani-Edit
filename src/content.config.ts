@@ -50,6 +50,8 @@ export const nailContentSchema = ({ image }: { image: () => any }) =>
       .string()
       .min(5, 'Hero image alt text must be descriptive (minimum 5 characters)'),
 
+    author: z.string().optional(),
+
     publishDate: z.coerce.date(),
 
     updatedDate: z.coerce.date().optional(),
@@ -76,6 +78,15 @@ export const nailContentSchema = ({ image }: { image: () => any }) =>
     draft: z.boolean().default(false),
   });
 
+/**
+ * Strict schema specifically for nail-care content collection.
+ * Enforces E-E-A-T standards: author is strictly REQUIRED.
+ */
+export const nailCareSchema = ({ image }: { image: () => any }) =>
+  nailContentSchema({ image }).extend({
+    author: z.string().min(2, 'Author is required for nail care content (E-E-A-T)'),
+  });
+
 // 8 Dedicated Topical Silo Collections via Astro Content Layer
 export const collections = {
   'nail-designs': defineCollection({
@@ -96,7 +107,7 @@ export const collections = {
   }),
   'nail-care': defineCollection({
     loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/nail-care' }),
-    schema: nailContentSchema,
+    schema: nailCareSchema,
   }),
   'occasion-nails': defineCollection({
     loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/occasion-nails' }),

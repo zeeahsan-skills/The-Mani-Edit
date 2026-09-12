@@ -7,6 +7,7 @@ primaryKeyword: "how to safely remove gel nails at home"
 silo: "nail-care"
 heroImage: "../../assets/images/gel-removal-hero.jpg"
 heroImageAlt: "Close-up of a home manicure station showing safe gel nail removal with foil wraps, wooden cuticle stick, and acetone"
+author: "The Nail Edit Editorial Team"
 publishDate: 2026-09-10
 relatedPages:
   - title: "Nail Care & Health Directory"
