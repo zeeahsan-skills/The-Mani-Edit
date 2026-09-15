@@ -23,11 +23,13 @@ const siteName = 'The Nail Edit';
 const siteUrl = Astro.site || 'https://nailedits.site/';
 const absoluteOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteUrl).toString();
 const requestHostname = Astro.url?.hostname || (Astro.site ? new URL(Astro.site).hostname : '');
+const isVercelPreview =
+  typeof (globalThis as any).process !== 'undefined' &&
+  (globalThis as any).process.env?.VERCEL_ENV === 'preview';
 const isVercelDomain =
   requestHostname.endsWith('.vercel.app') ||
   requestHostname === 'vercel.app' ||
-  (typeof (globalThis as any).process !== 'undefined' &&
-    Boolean((globalThis as any).process.env?.VERCEL_URL && (globalThis as any).process.env.VERCEL_URL.includes('vercel.app')));
+  isVercelPreview;
 
 const shouldNoIndex = noindex || isVercelDomain;
 ---
